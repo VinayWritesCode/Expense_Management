@@ -1,0 +1,39 @@
+.myPieChart {
+    padding: 20px;
+    width: 45vw;
+    height: auto;
+    
+}
+.PieContent, .BarContent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.myBarChart {
+    width: 70vw;
+    height: auto;
+}
+
+#select_year, #select_month, .input {
+    text-align: center;
+    background: rgba(38, 4, 60, 0.651); color:#fff; border-radius: 25px; padding: 1px 10px;
+}
+
+@media only screen and (max-width: 650px) {
+    .myBarChart {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.myPieChart {
+    width: 95vw;
+    height: auto;
+    
+}
+
+
+}
+
+

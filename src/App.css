@@ -1,0 +1,188 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: #fff;
+    
+}
+
+body {  
+    background-color: #270327;
+}
+
+
+.chart {
+    width: 100vw;
+    height: auto;
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+    background-color: #0d0114;
+    margin-top: auto;
+}
+
+.candlechart {
+    position: relative;
+    margin: 15vh 0 15vh 0;
+}
+
+
+
+
+
+.App {
+    
+    background-color: #05080ff5;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+.TopContents {
+    margin-top: 55.5vh;
+}
+
+.cards{
+    
+    display: grid;
+    align-items: center;
+    justify-content:space-around;
+    grid-template-columns: auto auto auto auto;
+} 
+.row1 {
+    background: #2b012b;
+    border-radius: 25px 25px 0 0;
+}
+.row1 h4{
+    margin-top: -3vh;
+    padding: 4vh 1vw;
+}
+
+.row2 {
+    background-color: #020716f5;
+    padding: 2vh 1vw;
+    border-radius:0 0 25px 25px;
+}
+
+.card{
+    width: 14vw;
+    height: auto;
+    margin:2vh 2vw;
+   
+}
+
+
+.buttons {
+    padding: 5vh 25vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons #btn1, .buttons #btn2 {
+    background-color: transparent;
+    color: #fff;
+    padding: 5px 14px;
+    border: 2px solid rgb(164, 204, 18);
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+.buttons #btn1:hover, .buttons #btn2:hover {
+    background-color: rgb(227, 228, 240);
+    color: #800080;
+}
+.Forms1, .Forms2 {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+   top: 15vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   z-index: 1;
+   overflow: hidden;
+   margin: 10vh 0 0  0;
+
+}
+.ExpenseForm,  .RevenueForm {
+    width: auto;
+    height: auto;
+   background-color: #000;
+   border:  2px solid rgba(255, 192, 203, 0.842);
+   display:grid;
+   grid-template-columns: auto;
+   padding: 5vh 5vw;
+}
+
+
+
+#close {
+    
+    border: none;
+    color: #fff;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 0 0 0 90%;
+    padding: 10px;
+}
+
+.toggleclose {
+    display: none;
+}
+
+
+
+.totalExpense {
+    color: #fff;
+}
+
+.first_Chart, .second_Chart {
+    width: 80vw;
+    text-align: center;
+    color: rgb(159, 163, 177);
+}
+
+.first_Chart h1, .second_Chart h1 {
+    margin: 10vh 0 10vh 0;
+}
+
+ .input {
+    text-align: center;
+    background: rgba(38, 4, 70, 0.651); color:#fff; border-radius: 25px; padding: 1px 10px;
+}
+
+
+@media only screen and (max-width: 600px) {
+ 
+
+.buttons {
+    padding: 5vh 10vw;
+}
+
+.cards{
+    grid-template-columns: auto auto ;
+}
+
+.card{
+    width: 30vw;
+    height: auto;
+}
+.row1 h4{
+    padding: 2vh 3vw;
+    font-size: 3.2vw;
+}
+  .Forms1, .Forms2 {
+   top: 35vh;
+}
+
+.ExpenseForm,  .RevenueForm {
+  
+   padding: 1vh 2vw;
+}
+
+}
+

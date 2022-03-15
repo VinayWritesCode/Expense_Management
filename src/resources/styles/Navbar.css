@@ -1,0 +1,41 @@
+nav {
+    width: 100vw;
+    height: 8vh;
+    position: sticky;
+    background: rgba(128, 0, 128, 0.404);
+    color: #fff;
+    overflow: hidden;
+    top: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav > ul {
+    padding-top: 2vh;
+    margin-left: -5vw;
+}
+
+nav > ul > li {
+    display: inline-block;
+    margin-left: 5vw;
+    list-style: none;
+    cursor: pointer;
+    padding-bottom: 1px;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+   color: rgb(220, 216, 231);
+   text-decoration: none;
+}
+
+.active, .btn:hover {
+  border-bottom: 4px solid rgb(214, 50, 105);
+  color:#fff;
+}
+
+Link{
+    text-transform: uppercase;
+    text-decoration: none;
+}

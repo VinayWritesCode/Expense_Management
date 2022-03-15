@@ -1,0 +1,17 @@
+
+input[type='button'] {
+    padding: 5px 15px;
+    background-color: transparent;
+    font-weight: bold;
+    border-radius: 25px;
+    border: 2px solid #ffa500;
+}
+
+input[type='button']:hover {
+    background-color: #fff;
+    color: rgb(127, 44, 160);
+}
+
+.title {
+    margin: 10vh 0 10vh 0;
+}
