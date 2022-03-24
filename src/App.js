@@ -12,6 +12,8 @@ import {
   Route,
   Navigate
 } from "react-router-dom";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 
 function App() {
@@ -19,12 +21,15 @@ function App() {
     <div className="App">
       <Router>
       <Navbar />
-         <Routes>
+        <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/About" element={<About />} />
+          <Route exact path="/Login" element={<Login />} />
+          <Route exact path="/Signup" element={<Signup />} />
           <Route exact path="/Profile" element={<Profile />} />
           <Route exact path="/Blogs" element={<Blog />} /> 
           <Route exact path="/UpdateList" element={<UpdateList />} />
+          <Route path="*" element={ <Navigate to='/' />} />
       </Routes>
       </Router>
     </div>

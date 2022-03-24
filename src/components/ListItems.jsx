@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
 
 function ListItems() {
+
+
   return (
     <div>
         <div className="listCard">
-            list
+            
         </div>
     </div>
   )

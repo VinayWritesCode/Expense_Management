@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import data from '../resources/data'
+import '../resources/styles/Card.css'
 
 function Cards() {
 

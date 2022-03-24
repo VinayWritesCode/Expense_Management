@@ -1,0 +1,51 @@
+.TopContents {
+    margin-top: 5.5vh;
+   
+}
+
+
+
+.design {
+    width: 100%;
+    min-height: 50vh;
+    animation: bounce 2s ease-in infinite alternate-reverse both;
+    padding: 10vh 5vw;
+}
+
+.design img {
+    width: 100%;
+    height: 50vh;
+}
+
+@keyframes bounce {
+   0% {
+  transform: translateY(5vh);
+}
+100% {
+  transform: translateY(0px);
+}
+   
+}
+
+@-webkit-keyframes bounce {
+   0%, 20%, 50%, 80%, 100% {
+       transform: translateY(0);
+   }
+   40% {
+       transform: translateY(-30px);
+   }
+   60% {
+       transform: translateY(-15px);
+   }
+}
+
+@media only screen and (max-width: 600px) {
+ 
+
+
+
+
+
+}
+
+

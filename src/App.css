@@ -40,38 +40,7 @@ body {
     overflow: hidden;
 }
 
-.TopContents {
-    margin-top: 55.5vh;
-}
 
-.cards{
-    
-    display: grid;
-    align-items: center;
-    justify-content:space-around;
-    grid-template-columns: auto auto auto auto;
-} 
-.row1 {
-    background: #2b012b;
-    border-radius: 25px 25px 0 0;
-}
-.row1 h4{
-    margin-top: -3vh;
-    padding: 4vh 1vw;
-}
-
-.row2 {
-    background-color: #020716f5;
-    padding: 2vh 1vw;
-    border-radius:0 0 25px 25px;
-}
-
-.card{
-    width: 14vw;
-    height: auto;
-    margin:2vh 2vw;
-   
-}
 
 
 .buttons {
@@ -163,18 +132,7 @@ body {
     padding: 5vh 10vw;
 }
 
-.cards{
-    grid-template-columns: auto auto ;
-}
 
-.card{
-    width: 30vw;
-    height: auto;
-}
-.row1 h4{
-    padding: 2vh 3vw;
-    font-size: 3.2vw;
-}
   .Forms1, .Forms2 {
    top: 35vh;
 }
