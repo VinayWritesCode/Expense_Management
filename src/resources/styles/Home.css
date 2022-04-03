@@ -2,15 +2,14 @@
     margin-top: 5.5vh;
    
 }
-
-
-
 .design {
     width: 100%;
     min-height: 50vh;
     animation: bounce 2s ease-in infinite alternate-reverse both;
     padding: 10vh 5vw;
 }
+
+
 
 .design img {
     width: 100%;

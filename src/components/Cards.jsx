@@ -15,13 +15,13 @@ function Cards() {
         TotalfetchDayRevenuebyMonth()
         TotalExpenses()
         TotalRevenue()
+        // eslint-disable-next-line
     }, [])
     
 
     const TotalfetchDayExpensebyMonth = () => {
         let thisMonthExpense = document.getElementById("thisMonthExpense");
         currentMonthExpense = 0;
-        console.log(thisMonthExpense)
         data.dailyExpense.forEach(data => {
             let date = data.date
 
@@ -76,13 +76,16 @@ function Cards() {
 
 
   return (
-      <div><div className="cards">
+      <div>
+          
+          <div className="cards">
           <div className="card">
               <div className="row1">
                   <h4>Total Expense</h4>
               </div>
               <div className="row2"><span id="totalExpense"></span></div>
           </div>
+
           <div className="card">
               <div className="row1">
                   <h4>Total Revenue</h4>

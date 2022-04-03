@@ -7,6 +7,11 @@
     
 }
 
+::selection {
+    background-color: #ff0000;
+    color:rgb(9, 4, 39);
+}
+
 body {  
     background-color: #270327;
 }
@@ -62,12 +67,19 @@ body {
     background-color: rgb(227, 228, 240);
     color: #800080;
 }
-.Forms1, .Forms2 {
+.forms-ex-rev {
     position: absolute;
     width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.Forms1, .Forms2 {
+    position: relative;
+    width: 100%;
     height: auto;
-    padding: 10px;
-   top: 15vh;
+    padding: 5px;
+   top: -30vh;
    display: flex;
    align-items: center;
    justify-content: center;
@@ -83,10 +95,12 @@ body {
    border:  2px solid rgba(255, 192, 203, 0.842);
    display:grid;
    grid-template-columns: auto;
-   padding: 5vh 5vw;
+   padding: 1vh 1vw;
 }
 
-
+#form-title {
+    padding-bottom: 40px;
+}
 
 #close {
     
@@ -104,7 +118,6 @@ body {
 }
 
 
-
 .totalExpense {
     color: #fff;
 }
@@ -115,7 +128,11 @@ body {
     color: rgb(159, 163, 177);
 }
 
-.first_Chart h1, .second_Chart h1 {
+.title-chart h1 {
+    margin: 10vh 0 10vh 0;
+}
+
+.first_Chart h2, .second_Chart h2 {
     margin: 10vh 0 10vh 0;
 }
 
@@ -133,9 +150,7 @@ body {
 }
 
 
-  .Forms1, .Forms2 {
-   top: 35vh;
-}
+ 
 
 .ExpenseForm,  .RevenueForm {
   
@@ -143,4 +158,3 @@ body {
 }
 
 }
-

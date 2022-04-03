@@ -1,0 +1,21 @@
+.listCard {
+    width: 100%;
+    background: #800080;
+    overflow-x: scroll;
+    display: flex;
+    justify-content: center;
+    background-color: #1e0225;
+}
+
+
+.listCard::-webkit-scrollbar {
+    width: 0;
+}
+
+@media (max-width: 570px) {
+   .listCard {
+       padding-left: 25vw;
+       font-size: small;
+   }
+
+}

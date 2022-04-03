@@ -1,6 +1,6 @@
 nav {
     width: 100vw;
-    height: 8vh;
+    min-height: 8vh;
     position: sticky;
     background: rgba(128, 0, 128, 0.404);
     color: #fff;
@@ -11,13 +11,12 @@ nav {
 }
 
 nav > ul {
-    padding-top: 2vh;
     margin-left: -5vw;
 }
 
 nav > ul > li {
     display: inline-block;
-    margin-left: 5vw;
+    margin:2vh 5vw;
     list-style: none;
     cursor: pointer;
     padding-bottom: 1px;
@@ -28,6 +27,12 @@ nav > ul > li {
   cursor: pointer;
    color: rgb(220, 216, 231);
    text-decoration: none;
+}
+
+.btn-logout {
+    padding: 0px 15px;
+    background-color: transparent;
+    font-size: 16px;
 }
 
 .active, .btn:hover {

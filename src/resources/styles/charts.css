@@ -10,12 +10,19 @@
     justify-content: center;
 }
 
+
+
+.space-tb input{
+    margin: 6vh 1.5vw ;
+}
+
+
 .myBarChart {
     width: 70vw;
     height: auto;
 }
 
-#select_year, #select_month, .input {
+#select_year, #select_month, .input,.space-tb button  {
     text-align: center;
     background: rgba(38, 4, 60, 0.651); color:#fff; border-radius: 25px; padding: 1px 10px;
 }

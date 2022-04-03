@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -9,23 +8,17 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
-import data from '../resources/data';
 import { Bar } from 'react-chartjs-2';
 import '../resources/styles/charts.css';
+import axios from 'axios';
 
-function BarChart() {
-    const [dailyExpenses, setDailyExpenses] = useState([])
-    const [value, setValue] = useState("2022")
-    const [dates, setDates] = useState([])
-
-
-
-  
-  useEffect(() => {
-
-    fetchDayExpensebyMonth();
-  }, [])
-
+function BarChart(props) {
+  let { monthYear, setMonthYear, labelMonth } = props;
+  const [expenseDayData, setExpenseDayData] = useState({ "message": [{ "Day": ""}],"status": "false"} );
+  const [revenueDayData, setRevenueDayData] = useState({ "message": [{ "Day": "" }], "status": "false" });
+  const [day, setDay ] = useState([]);
+  let day1 = expenseDayData;
+  let day2 = revenueDayData;
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -35,7 +28,106 @@ function BarChart() {
     Legend
   );
 
-    const fetchDayExpensebyMonth = () => {
+  useEffect(() => {
+    ExpensesDayMonth();
+    RevenuesDayMonth();
+    // eslint-disable-next-line
+  }, [])
+  
+
+  const ExpensesDayMonth = () => {
+    setExpenseDayData({ "message": [{ "Day": "" }], "status": "false" });
+    const url = `http://localhost:8808/Server_Expense_Management/api/UserData/getData/getExpenseDayMonth.php`;
+    const params = new URLSearchParams()
+    params.append('token', localStorage.getItem('token'))
+    params.append('year', monthYear.year);
+    params.append('month', monthYear.month);
+    const config = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+      }
+    }
+
+    axios.post(url, params, config)
+      .then((result) => {
+        if (result.data.status === "true") {
+          setExpenseDayData({
+            "message": result.data.message,
+            "status": "true"
+          });
+        }
+        else {
+          alert(result.data.message);
+        }
+      })
+      .catch((err) => {
+        // Do somthing
+      })
+    fetchDayMonth();
+  }
+
+  const RevenuesDayMonth =  () => {
+    setRevenueDayData({ "message": [{ "Day": "" }], "status": "false" });
+    const url = `http://localhost:8808/Server_Expense_Management/api/UserData/getData/getRevenueDayMonth.php`;
+    const params = new URLSearchParams()
+    params.append('token', localStorage.getItem('token'))
+    params.append('year', monthYear.year);
+    params.append('month', monthYear.month);
+    const config = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+      }
+    }
+
+    axios.post(url, params, config)
+      .then((result) => {
+        if (result.data.status === "true") {
+          setRevenueDayData({
+            "message": result.data.message,
+            "status": "true"
+            });
+
+        }
+        else {
+          alert(result.data.message);
+        }
+      })
+      .catch((err) => {
+        // Do somthing
+      })
+    fetchDayMonth();
+  }
+
+  
+   
+  const fetchDayMonth = async () => {
+    if(revenueDayData.status === "true"){
+      const day1 = revenueDayData.message.map(items=>{
+        return items.Day
+      })
+    }
+    if(expenseDayData.status === "true"){
+      const day2 = expenseDayData.message.map(items => {
+        return items.Day
+      })
+      setDay(day1.concat(day2));
+      console.log(day1);
+      console.log(day2);
+      console.log(day);
+    }
+    
+    
+  }
+
+  
+
+
+
+
+  const dailyExpenses = [];
+ /*
+  
+   const fetchDayExpensebyMonth = () => {
         
         let dates = []
         let DailyExpenses = []
@@ -60,12 +152,13 @@ function BarChart() {
 
     
     
-    
+    */
 
   
 
 
-  const labels = dates;
+
+  const labels = day;
 
     const Bardata = {
        labels,
@@ -94,32 +187,42 @@ function BarChart() {
 
   };
 
+  const handleChange = (e) => {
+    console.log([e.target.name] +":"+ e.target.value)
+    setMonthYear({[e.target.name]: e.target.value});
+    ExpensesDayMonth(e);
+    RevenuesDayMonth(e);
+  }
+
+    
+
   return (
     <div>
-          <div className="dropdown">
-              <select id="select_month" onChange={fetchDayExpensebyMonth}>
-                  <option value="Jan">Jan</option>
-                  <option value="Feb">Feb</option>
-                  <option value="Mar">Mar</option>
-                  <option value="Apr">Apr</option>
-                  <option value="May">May</option>
-                  <option value="Jun">Jun</option>
-                  <option value="Jul">Jul</option>
-                  <option value="Aug">Aug</option>
-                  <option value="Sep">Sep</option>
-                  <option value="Oct">Oct</option>
-                  <option value="Nov">Nov</option>
-                  <option value="Dec">Dec</option>
-              </select>
-              <input type="number" id="select_year" onChange={e => { setValue(e.target.value); fetchDayExpensebyMonth()}} min="1900" max="2099" step="1" value={value} />
-          </div>
+      <div className="dropdown space-tb">
+        <select id="select_month" value={monthYear.month} name="month" onChange={(e) => handleChange(e)}>
+                  <option value="01">Jan</option>
+                  <option value="02">Feb</option>
+                  <option value="03">Mar</option>
+                  <option value="04">Apr</option>
+                  <option value="05">May</option>
+                  <option value="06">Jun</option>
+                  <option value="07">Jul</option>
+                  <option value="08">Aug</option>
+                  <option value="09">Sep</option>
+                  <option value="10">Oct</option>
+                  <option value="11">Nov</option>
+                  <option value="12">Dec</option>
+        </select>
+        <input type="number" id="select_year" name="year" onChange={(e) => { setMonthYear({ ...monthYear, [e.target.name]: e.target.value }); handleChange();  }} min="1900" max="2099" step="1" value={monthYear.year} />
+        <button onClick={(e) => handleChange(e)}> Search </button>
+          </div> 
           <div className="BarContent">
              <div className='myBarChart'>
                 <Bar options={options} data={Bardata} />
              </div>
           </div>
     </div>
-  )
+    )
 }
 
 export default BarChart;

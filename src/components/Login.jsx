@@ -1,35 +1,62 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../resources/styles/login.css';
+import { useNavigate } from 'react-router-dom';
+
 
 function Login() {
 
     const [login, setLogin] = useState({ email: "", password: "" });
+    let navigate = useNavigate();
+
+    useEffect(() => {
+        // if user already login
+        if (localStorage.getItem('token')) {
+            navigate('/');
+        }
+        // eslint-disable-next-line
+    }, [])
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+    
+        const url = `http://localhost:8808/Server_Expense_Management/api/UserData/UserAuth/login.php`;
 
-        const host = "http://localhost:8808/";  // todo .env variable during deployment
-        const response = await fetch(`${host}Server_Expense_Management/api/UserData/UserAuth/login.php`, {
-            method: 'POST',
+        const params = new URLSearchParams()
+        params.append('email', login.email)
+        params.append('password', login.password)
+        const config = {
             headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({email: login.email, password: login.password })
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            }
+        }
 
-        })
-
-        const json = await response.json();
-        console.log(json);
+        await axios.post(url, params, config)
+            .then((result) => {
+                if (result.data.status === "true"){
+                    var token = result.data['auth-token'];
+                    localStorage.setItem('token', JSON.stringify(token));
+                    console.log(localStorage.getItem('token'));
+                    alert("Login Successfully . Welcome, Manage your Expenses and Revenues Easily with us");
+                    navigate('/')
+                }
+                else {
+                    alert("Sorry, Login unsuccessfull");
+                }
+            })
+            .catch((err) => {
+                
+            })
         
 
     }
     const handleChange = (e) => {
-        setLogin({ ...login, [e.target.name]: e.target.value })
-        console.log(e.target.value);
-        
+        setLogin({ ...login, [e.target.name]: e.target.value })    
     }
 
+    console.log(localStorage.getItem('token'));
   return (
     <div className='Login ' >
           <div className="container">
@@ -63,7 +90,7 @@ function Login() {
                               <Link to="/Signup" style={{ textDecoration: 'none'}} >Sign Up</Link>
                           </button>
                       </div>
-                      <img src="img/log.svg" className="image" alt="" />
+                      <div className="image"></div>
                   </div>
               </div>
           </div>
