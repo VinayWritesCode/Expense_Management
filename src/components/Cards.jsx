@@ -1,76 +1,95 @@
-import React, { useEffect } from 'react';
-import data from '../resources/data'
+import axios from 'axios';
+import React, {useState, useEffect } from 'react';
 import '../resources/styles/Card.css'
 
-function Cards() {
+function Cards(props) {
 
+    
+    const { labelMonth, currentYear, currentMonth } = props;
 
-    let currentMonthExpense = 0;
-    let currentMonthRevenue = 0;
-    let currentDate = "22 Mar 2022";
-
+    const [totalExpense, setTotalExpense ] = useState(0)
+    const [totalRevenue, setTotalRevenue] = useState(0)
+    const [TotalMonthExpenses, setTotalMonthExpenses] = useState(0)
+    const [TotalMonthRevenues, setTotalMonthRevenues] = useState(0)
+    
 
     useEffect(() => {
-        TotalfetchDayExpensebyMonth()
-        TotalfetchDayRevenuebyMonth()
-        TotalExpenses()
-        TotalRevenue()
+        TotalAmount()
+        TotalAmountThisMonth();
         // eslint-disable-next-line
     }, [])
-    
 
-    const TotalfetchDayExpensebyMonth = () => {
-        let thisMonthExpense = document.getElementById("thisMonthExpense");
-        currentMonthExpense = 0;
-        data.dailyExpense.forEach(data => {
-            let date = data.date
-
-            if ((date.indexOf(currentDate.slice(2, 5)) !== -1) && (date.indexOf(currentDate.slice(6, currentDate.length)) !== -1)) {
-                currentMonthExpense += data.totalExpense;
+    const TotalAmount = async () => {
+        const url = `http://localhost:8808/Server_Expense_Management/api/UserData/getData/getTotalAmount.php`;
+        const params = new URLSearchParams()
+        params.append('token', localStorage.getItem('token'))
+        params.append('year', currentYear);
+        const config = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
             }
-        });
-        thisMonthExpense.innerHTML = currentMonthExpense;
-       
+        }
+
+        await axios.post(url, params, config)
+            .then((result) => {
+                if (result.data.status1 === "true" || result.data.status2 === "true") {
+                    if (result.data.status1 === "true") {
+                        result.data.message1.map(item => {
+                            setTotalExpense(item.ExpenseAmount);
+                        })
+                    }
+                    if (result.data.status2 === "true") {
+                        result.data.message2.map(item => {
+                            setTotalRevenue(item.RevenueAmount);
+                        })
+                    }
+                    
+                }
+                else {
+                    alert(result.data.message);
+                }
+            })
+            .catch((err) => {
+                // Do somthing
+            })
     }
-
-    const TotalfetchDayRevenuebyMonth = () => {
-        let thisMonthRevenue = document.getElementById("thisMonthRevenue");
-        currentMonthRevenue = 0;
-        data.dailyExpense.forEach(data => {
-            let date = data.date
-
-            if ((date.indexOf(currentDate.slice(2, 5)) !== -1) && (date.indexOf(currentDate.slice(6, currentDate.length)) !== -1)) {
-                currentMonthRevenue += data.totalRevenue;
-            }
-        });
-        thisMonthRevenue.innerHTML = currentMonthRevenue;
-    }
-
-  
-
     
+    const TotalAmountThisMonth = async () => {
+ 
+        const url = `http://localhost:8808/Server_Expense_Management/api/UserData/getData/getTotalMonthAmount.php`;
+        const params = new URLSearchParams()
+        params.append('token', localStorage.getItem('token'))
+        params.append('year', currentYear);
+        params.append('month', currentMonth);
+        const config = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            }
+        }
 
-    const TotalExpenses = () => {
-        let totalExpense = document.getElementById('totalExpense')
-        let total = 0;
-        data.dailyExpense.forEach(data => {
-            total += data.totalExpense;
+        await axios.post(url, params, config)
+            .then((result) => {
+                if (result.data.status1 === "true" || result.data.status2 === "true") {
+                    if (result.data.status1 === "true") {
+                        result.data.message1.map(item => {
+                            setTotalMonthExpenses(item.Amount);
+                        })
+                    }
+                    if (result.data.status2 === "true") {
+                        result.data.message2.map(item => {
+                            setTotalMonthRevenues(item.Amount);
+                        })
+                    }
 
-        });
-        totalExpense.innerHTML = total
+                }
+                else {
+                    alert(result.data.message);
+                }
+            })
+            .catch((err) => {
+                // Do somthing
+            })
     }
-
-    const TotalRevenue = () => {
-        let totalRevenue = document.getElementById('totalRevenue')
-        let total = 0;
-        data.dailyExpense.forEach(data => {
-            total += data.totalRevenue;
-
-        });
-        totalRevenue.innerHTML = total
-    }
-
-
 
 
 
@@ -81,28 +100,28 @@ function Cards() {
           <div className="cards">
           <div className="card">
               <div className="row1">
-                  <h4>Total Expense</h4>
+                      <h4>Total Expense ({currentYear})</h4>
               </div>
-              <div className="row2"><span id="totalExpense"></span></div>
+                  <div className="row2"><span id="totalExpense">{totalExpense}</span></div>
           </div>
 
           <div className="card">
               <div className="row1">
-                  <h4>Total Revenue</h4>
+                      <h4>Total Revenue ({currentYear})</h4>
               </div>
-              <div className="row2"><span id="totalRevenue"></span></div>
+                  <div className="row2"><span id="totalRevenue">{totalRevenue}</span></div>
           </div>
           <div className="card">
               <div className="row1">
-                  <h4> Expense (Mar 2022)</h4>
+                      <h4> Expense ({labelMonth[currentMonth] + " " + currentYear})</h4>
               </div>
-              <div className="row2"><span id="thisMonthExpense"></span></div>
+                  <div className="row2"><span id="thisMonthExpense">{TotalMonthExpenses}</span></div>
           </div>
           <div className="card">
               <div className="row1">
-                  <h4> Revenue (Mar 2022) </h4>
+                      <h4> Revenue ({labelMonth[currentMonth] + " " + currentYear}) </h4>
               </div>
-              <div className="row2"><span id="thisMonthRevenue"></span></div>
+                  <div className="row2"><span id="thisMonthRevenue">{TotalMonthRevenues}</span></div>
           </div>
 
       </div></div>

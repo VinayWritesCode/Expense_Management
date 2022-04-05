@@ -25,6 +25,7 @@ function UpdateForm(props) {
                 params.append('spendid', formData.spendid)
                 params.append('datetime', formData.datetime)
                 params.append('type', formData.Type)
+                params.append('remark', formData.Type)
             } else { 
                 updateType = "updateRevenue.php"; 
                 params.append('recieved_id', formData.recieved_id)
@@ -108,7 +109,7 @@ function UpdateForm(props) {
                       <td><input type="text" placeholder="Enter Amount" className="input" value={formData.Amount} name="Amount" onChange={(e) => onChange(e)} required /></td>
                   </tr>
                   {
-                      (formData.type === "Expense") ? <tr>
+                      (showUpdate.type === "Expense") ? <tr>
                           <th>Type :</th>
                           <td><select className="input" value={formData.Type} name="Type" onChange={(e) => onChange(e)}>
                               <option value="none">Select Type</option>
@@ -119,7 +120,7 @@ function UpdateForm(props) {
                               <option value="Recharges & Bill Payment">Recharges & Bill Payment</option>
                               <option value="Others">Others</option>
                           </select></td>
-                      </tr> : ""
+                      </tr> : "" 
                   }
                   <tr>
                       <th>Remark :</th>

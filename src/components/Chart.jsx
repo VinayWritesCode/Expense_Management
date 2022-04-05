@@ -9,34 +9,32 @@ import axios from 'axios';
 
 
 
-function Chart() {
+function Chart(props) {
 
     const date = new Date();
-    const [status, setStatus] = useState("false");
-    const currentYear = date.getFullYear();
+    const { labelMonth, expenseData, revenueData, ExpensesEachMonth, RevenuesEachMonth, status, currentYear, year, setYear } = props
     const currentMonth = date.getMonth()
-    const currentDate = date.getDay() + "" +  + "" + currentYear;
-    const [year, setYear] = useState(currentYear);
     const [monthYear, setMonthYear] = useState({ "month": currentMonth, "year": currentYear});
-    const [expenseData, setExpenseData] = useState([]);
-    const [revenueData, setRevenueData] = useState([]);
-    const [labelMonth, setLabelMonth] = useState(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
+    const [expenseDayData, setExpenseDayData] = useState({ "message": [{ "Day": "" }], "status": "false" });
+    const [revenueDayData, setRevenueDayData] = useState({ "message": [{ "Day": "" }], "status": "false" });
 
 
 
     useEffect(() => {
-        ExpensesEachMonth();
-        RevenuesEachMonth();
+        ExpensesDayMonth();
+        RevenuesDayMonth();
         // eslint-disable-next-line
     }, [])
 
-    const ExpensesEachMonth = async () => {
 
-        setExpenseData([]);
-        const url = `http://localhost:8808/Server_Expense_Management/api/UserData/getData/getExpenseEachMonth.php`;
+
+    const ExpensesDayMonth = async () => {
+        setExpenseDayData({ "message": [{ "Day": "" }], "status": "false" });
+        const url = `http://localhost:8808/Server_Expense_Management/api/UserData/getData/getExpenseDayMonth.php`;
         const params = new URLSearchParams()
         params.append('token', localStorage.getItem('token'))
-        params.append('year', year);
+        params.append('year', monthYear.year);
+        params.append('month', monthYear.month);
         const config = {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -45,10 +43,11 @@ function Chart() {
 
         await axios.post(url, params, config)
             .then((result) => {
-                console.log(result)
                 if (result.data.status === "true") {
-                    setExpenseData(result.data.message);
-                    setStatus(result.data.status);
+                    setExpenseDayData({
+                        "message": result.data.message,
+                        "status": "true"
+                    });
                 }
                 else {
                     alert(result.data.message);
@@ -59,12 +58,13 @@ function Chart() {
             })
     }
 
-    const RevenuesEachMonth = async () => {
-        setRevenueData([]);
-        const url = `http://localhost:8808/Server_Expense_Management/api/UserData/getData/getRevenueEachMonth.php`;
+    const RevenuesDayMonth = async () => {
+        setRevenueDayData({ "message": [{ "Day": "" }], "status": "false" });
+        const url = `http://localhost:8808/Server_Expense_Management/api/UserData/getData/getRevenueDayMonth.php`;
         const params = new URLSearchParams()
         params.append('token', localStorage.getItem('token'))
-        params.append('year', year);
+        params.append('year', monthYear.year);
+        params.append('month', monthYear.month);
         const config = {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -73,10 +73,12 @@ function Chart() {
 
         await axios.post(url, params, config)
             .then((result) => {
-                console.log(result)
                 if (result.data.status === "true") {
-                    setRevenueData(result.data.message);
-                    setStatus(result.data.status);
+                    setRevenueDayData({
+                        "message": result.data.message,
+                        "status": "true"
+                    });
+
                 }
                 else {
                     alert(result.data.message);
@@ -86,6 +88,14 @@ function Chart() {
                 // Do somthing
             })
     }
+
+   
+    const callRevenueExpenseMethod = async () => {
+         ExpensesDayMonth();
+         RevenuesDayMonth();
+    }
+
+    
 
     
 
@@ -96,28 +106,28 @@ function Chart() {
                     <h1>Visualization of data</h1>
                 </div>
                 <div className="first_Chart">
-                    <h2>Your Daily Expense & Revenue Comparison</h2>
+                    <h2>Your Monthly Expense & Revenue Comparison</h2>
                     <div className="candlechart">
-                        <LineChart ExpenseData={[]} />
+                        <LineChart currentYear={currentYear} />
                     </div>
                 </div>
 
-                <div className="first_Chart">
-                    <h2>Your Daily Expense & Revenue Comparison</h2>
-                    <div className="candlechart">
-                        <BarChart monthYear={monthYear} setMonthYear={setMonthYear} labelMonth={labelMonth} />
-                    </div>
-                </div>
                 <div className="second_Chart">
                     <h2>Your Monthly Expenses</h2>
                     <div>
-                        <PieChart data={expenseData} getMethod={ExpensesEachMonth} setYear={setYear} year={year} labelMonth={labelMonth} />
+                        <PieChart data={expenseData} getMethod={ExpensesEachMonth} setYear={setYear}  year={year} labelMonth={labelMonth} />
                     </div>
                 </div>
                 <div className="second_Chart">
                     <h2>Your Monthly Revenues</h2>
                     <div>
-                        <PieChart data={revenueData} getMethod={RevenuesEachMonth} setYear={setYear} year={year} labelMonth={labelMonth} />
+                        <PieChart data={revenueData} getMethod={RevenuesEachMonth} setYear={setYear}  year={year} labelMonth={labelMonth} />
+                    </div>
+                </div>
+                <div className="first_Chart">
+                    <h2>Your Daily Expense & Revenue Comparison</h2>
+                    <div className="candlechart">
+                        <BarChart getMethod={callRevenueExpenseMethod} monthYear={monthYear} setMonthYear={setMonthYear} revenueDayData={revenueDayData} expenseDayData={expenseDayData} labelMonth={labelMonth} />
                     </div>
                 </div>
 
