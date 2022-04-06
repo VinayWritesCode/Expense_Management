@@ -10,6 +10,9 @@ function Profile() {
 
   const [userInfo, setUserInfo] = useState({
     "first_name": "", "last_name": "", "age": "", "email": "", "profile_photo": "" })
+  const [score, setScore ] = useState({"score": "0", "stype": ""})
+
+  
 
   let navigate = useNavigate();
   useEffect(() => {
@@ -24,10 +27,14 @@ function Profile() {
     // eslint-disable-next-line
   }, [])
 
+  const date = new Date();
+  const currentYear = date.getFullYear();
+
   const getProfileInfo = async () => {
     const url = `http://localhost:8808/Server_Expense_Management/api/UserData/getData/getProfileInfo.php`;
     const params = new URLSearchParams()
     params.append('token', localStorage.getItem('token'))
+    params.append('year', currentYear)
     const config = {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -38,7 +45,8 @@ function Profile() {
       .then((result) => {
         if (result.data.status === "true") {
           console.log(result.data.message[0])
-          setUserInfo(result.data.message[0]);
+          setUserInfo(result.data.message[0])
+          setScore({ "score": result.data.score, "stype": result.data.stype})
         }
         else {
           alert(result.data.message);
@@ -70,7 +78,6 @@ function Profile() {
     await axios.post(url, params, config)
       .then((result) => {
         if (result.data.status === "true") {
-          console.log(result.data.message)
           refreshPage();
         }
         else {
@@ -104,8 +111,8 @@ function Profile() {
           
           <div className="profileinfo">
             <h1>Hi, {userInfo.first_name}</h1>
-            <h3>Score : 70% (Good)</h3>
-            <p className="bio">" Score help you to identify your performance "</p>
+            <h3>Score : {score.score+"%"}({score.stype})</h3>
+            <p className="bio">" Score help you to identify your current year performance "</p>
           </div>
         </div>
         

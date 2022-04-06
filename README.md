@@ -16,6 +16,7 @@ Basic features include -
 - Landing Page
 - Login and Signup
 - Profile Page
+- Score :(Current Year Performance in percentage) -> This feature added in Profile Page
 - Adding new Revenue/Expense Data
 - Update new Revenue/Expense Data
 - Delete Revenue/Expense Record
