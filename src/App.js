@@ -2,7 +2,7 @@ import React from "react";
 import './App.css';
 import Home from "./components/Home";
 import About from "./components/About";
-import Blog from "./components/Blog";
+import Contact from "./components/Contact";
 import Navbar from './components/Navbar';
 import Profile from "./components/Profile";
 import UpdateList from "./components/UpdateList";
@@ -27,7 +27,7 @@ function App() {
           <Route exact path="/Login" element={<Login />} />
           <Route exact path="/Signup" element={<Signup />} />
           <Route exact path="/Profile" element={<Profile />} />
-          <Route exact path="/Blogs" element={<Blog />} /> 
+          <Route exact path="/Contact" element={<Contact />} /> 
           <Route exact path="/UpdateList" element={<UpdateList />} />
           <Route path="*" element={ <Navigate to='/' />} />
       </Routes>

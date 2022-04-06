@@ -1,3 +1,33 @@
+# Expense Management (Budget Tracker) Website 💰 Using ReactJs And PHP By @VinayWritesCode
+
+Simple revenue/expense tracker website built with ReactJs and PHP (Backend)💕
+
+Backend Code in PHP Soon available on [Expense Management 💰 @VinayWritesCode](https://github.com/VinayWritesCode) .
+
+# How Expense Management Web works?
+Expense Management website help you to store your Daily Revenue and Expense Data easily on the cloud .This website is design in the way that can used by any businessman/individual to manage day by day transection information (Revenue/Reciept , Expense/Liabilities ). This website provide features of charts which help you to visualize your Revenue/Reciept , Expense/Liabilities easily using Charts Like :-
+- Bar Chart
+- Line Chart 
+- Pie Chart
+
+## Features
+Basic features include -
+
+- Landing Page
+- Login and Signup
+- Profile Page
+- Adding new Revenue/Expense Data
+- Update new Revenue/Expense Data
+- Delete Revenue/Expense Record
+- View All Revenue/Expense Record
+- Month Wise Revenue/Expense (Current Year/Previous Year) Comparison Line Chart
+- Month Wise Revenue Pie Chart
+- Month Wise Expense Pie Chart
+- Day Wise Expense/Revenue Bar Chart
+- Contact Page
+- About Page
+- Responsive UI
+
 
 # Getting Started with Create React App
 
