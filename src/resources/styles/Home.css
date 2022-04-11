@@ -1,12 +1,31 @@
+
+.home-top-container-vs {
+  display: grid;
+  grid-template-columns: auto auto;
+background: url(../../images/bg3.jpg) ;
+}
+
 .TopContents {
     margin-top: 5.5vh;
-   
 }
+
+.landing-page-title {
+   margin: 15vh 0 0 5vw;
+   color: #dfb8df;
+   height: 5vh;
+}
+
+.landing-page-title h4{
+    border-right: 2px solid orange;
+    font-size: 1.5em;
+}
+
+
 .design {
     width: 100%;
     min-height: 50vh;
     animation: bounce 2s ease-in infinite alternate-reverse both;
-    padding: 10vh 5vw;
+    padding: 10vh 2vw;
 }
 
 
@@ -39,12 +58,13 @@
 }
 
 @media only screen and (max-width: 600px) {
- 
 
-
-
-
+.home-top-container-vs {
+    grid-template-columns: auto;
+}
 
 }
+
+
 
 

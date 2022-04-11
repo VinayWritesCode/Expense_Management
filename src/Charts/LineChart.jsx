@@ -138,11 +138,11 @@ function LineChart(props) {
                 label: "Current year expense",
                 data: lineChartExpenseData,
                 fill: true,
-                backgroundColor: "rgba(175,0,255,0.2)",
+                backgroundColor: "'rgba(255, 206, 86, 0.8)' ",
                 borderColor: "rgba(75,192,192,1)"
             },
             {
-                label: "Current year revenue",
+                label: "Current year income",
                 data: lineChartRevenueData,
                 fill: false,
                 borderColor: "#742774"
@@ -155,7 +155,7 @@ function LineChart(props) {
                 borderColor: "#fff"
             },
             {
-                label: "Current year revenue",
+                label: "Current year income",
                 data: lineChartPreviousRevenueData,
                 fill: false,
                 borderColor: "#742774"

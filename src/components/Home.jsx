@@ -1,4 +1,4 @@
-import React, { useState ,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Cards from './Cards';
 import Chart from './Chart';
 import MainForm from './MainForm';
@@ -32,7 +32,7 @@ function Home() {
   const [year, setYear] = useState(currentYear);
   const [status, setStatus] = useState("false");
   const [labelMonth, setLabelMonth] = useState(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
-  
+
 
   const ExpensesEachMonth = async () => {
     setExpenseData([]);
@@ -51,7 +51,7 @@ function Home() {
         if (result.data.status === "true") {
           setExpenseData(result.data.message);
           setStatus(result.data.status);
-          
+
         }
         else {
           alert(result.data.message);
@@ -89,21 +89,27 @@ function Home() {
       })
   }
 
-
+ 
 
   return (
-      <>
-      <div className="design">
-        <img src={img2} alt=""  />
+    <div className='home-container'>
+      <div className='home-top-container-vs'>
+        <div className="landing-page-title">
+          <h4>Manage your Expense with us !!</h4>
+        </div>
+        <div className="design">
+          <img src={img2} alt="" />
+        </div>
+        
       </div>
-          <div className='TopContents'>
-            <div className="bottom">
-          <Cards labelMonth={labelMonth} currentYear={currentYear} currentMonth={currentMonth} />
-          <MainForm />
-            </div>
+        <div className='TopContents'>
+          <div className="bottom">
+            <Cards labelMonth={labelMonth} currentYear={currentYear} currentMonth={currentMonth} />
+            <MainForm />
           </div>
+      </div>
       <Chart labelMonth={labelMonth} expenseData={expenseData} revenueData={revenueData} ExpensesEachMonth={ExpensesEachMonth} RevenuesEachMonth={RevenuesEachMonth} status={status} currentYear={currentYear} year={year} setYear={setYear} />
-    </>
+    </div>
   )
 }
 

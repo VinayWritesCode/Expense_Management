@@ -1,0 +1,119 @@
+.admin-container {
+   display: grid;
+   grid-template-columns: auto auto;
+   min-height: 100vh;
+   background-color: #841165;
+}
+
+.right-content {
+  width: 80vw;
+}
+
+
+.no-btn {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+}
+
+
+
+.sidebar {
+    width: 20vw auto;
+    padding-top: 45px;
+    height: 100vh;
+    background-color: #360436;
+    position: fixed;
+}
+.p-5 {
+   padding: 5vh 5vw;
+}
+
+
+.flex-col-vs {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 5px;
+}
+
+.flex-col-vs span {
+    display: block;
+    margin: 20px;
+}
+
+svg {
+    width: 50px;
+}
+
+
+
+.no-decoration-vs {
+    text-decoration: none;
+} 
+
+.flex-col-vs:hover {
+    box-shadow: 20px 20px 60px #610561,
+        -20px -20px 60px #081438f5;
+}
+
+
+.title > h5 {
+    margin-left: 30vw;
+}
+
+.topAdminBar {
+    width: 100vw;
+    padding: 5vh 5vw;
+    background-color: #16022e;
+}
+#adminName {
+     font-size: larger;
+    margin-left: 5vw;
+    color: #7c5ece;
+}
+
+#adminName span {
+    color: #ff0000;
+}
+
+.content-admin  .cards {
+    margin: 10vh 0 0 30vw;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+   
+    .flex-col-vs span {
+       display: none;
+    }
+
+
+    .btn-log {
+        width:60px;
+        margin: 2px;
+        height: 60px;
+        font-size: 10px;
+        padding: 0 5px;
+        border: 2px solid #fff;
+        border-radius: 25px 0 25px 0;
+        background-color: transparent;
+    }
+
+    .btn-log:hover {
+        background-color: #16022e;
+        color: #fff;
+        border-radius: 0 25px 0 25px;
+        
+    }
+
+
+.title {
+    font-size: 20px;
+}
+
+    
+}

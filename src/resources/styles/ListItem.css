@@ -1,10 +1,9 @@
 .listCard {
     width: 100%;
-    background: #800080;
     overflow-x: scroll;
     display: flex;
     justify-content: center;
-    background-color: #1e0225;
+    background: linear-gradient(30deg, rgb(40, 7, 71) 70%, rgb(136, 50, 50));
 }
 
 

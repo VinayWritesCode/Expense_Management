@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     color: #fff;
-    
+
 }
 
 ::selection {
@@ -15,7 +15,6 @@
 body {  
     background-color: #270327;
 }
-
 
 .chart {
     width: 100vw;
@@ -37,7 +36,6 @@ body {
 
 
 .App {
-    
     background-color: #05080ff5;
     width: 100%;
     height: auto;
@@ -63,9 +61,12 @@ body {
     font-weight: bold;
 }
 
+
+
 .buttons #btn1:hover, .buttons #btn2:hover {
     background-color: rgb(227, 228, 240);
     color: #800080;
+    background-position: right;
 }
 .forms-ex-rev {
     position: absolute;

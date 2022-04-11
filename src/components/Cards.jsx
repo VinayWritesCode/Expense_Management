@@ -107,7 +107,7 @@ function Cards(props) {
 
           <div className="card">
               <div className="row1">
-                      <h4>Total Revenue ({currentYear})</h4>
+                      <h4>Total Income ({currentYear})</h4>
               </div>
                   <div className="row2"><span id="totalRevenue">{totalRevenue}</span></div>
           </div>
@@ -119,7 +119,7 @@ function Cards(props) {
           </div>
           <div className="card">
               <div className="row1">
-                      <h4> Revenue ({labelMonth[currentMonth] + " " + currentYear}) </h4>
+                      <h4> Income({labelMonth[currentMonth] + " " + currentYear}) </h4>
               </div>
                   <div className="row2"><span id="thisMonthRevenue">{TotalMonthRevenues}</span></div>
           </div>

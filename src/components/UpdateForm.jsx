@@ -10,7 +10,6 @@ function UpdateForm(props) {
 
     const [ formData, setFormData ] = useState(data);
 
-    console.log(formData);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,7 +34,7 @@ function UpdateForm(props) {
             params.append('remark', formData.Remark)
 
             const url = `http://localhost:8808/Server_Expense_Management/api/UserData/updateData/${updateType}`;
-            console.log(url);
+           
             
 
             const config = {
@@ -54,7 +53,7 @@ function UpdateForm(props) {
                         setShowUpdate('false');
                     }
                     else {
-                        console.log(result.message);
+                        console.log(result.data.message);
                     }
                 })
                 .catch((err) => {
@@ -94,7 +93,7 @@ function UpdateForm(props) {
               <table cellPadding="8px" cellSpacing="17.5vh" >
                   <thead>
                       {
-                          (showUpdate.type === "Expense") ? <th colSpan="2" align='center' id="form-title">Expense Form</th> : <th colSpan="2" align='center' id="form-title">Revenue Form</th>
+                          (showUpdate.type === "Expense") ? <th colSpan="2" align='center' id="form-title">Expense Form</th> : <th colSpan="2" align='center' id="form-title">Income Form</th>
                       }
                       
                   </thead>

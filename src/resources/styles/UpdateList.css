@@ -1,5 +1,7 @@
 
-
+.container-top {
+    background: linear-gradient(30deg,rgb(134, 50, 136) 10%, rgb(15, 2, 27) );
+}
 input[type='button'] {
     padding: 5px 15px;
     background-color: transparent;

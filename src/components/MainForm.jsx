@@ -38,7 +38,7 @@ function MainForm() {
             </div>
             <div className="buttons" id="form-button">
                 <button id="btn1" onClick={expenseForm}>Add Expense</button>
-                <button id="btn2" onClick={revenueForm}>Add Revenue</button>
+                <button id="btn2" onClick={revenueForm}>Add Income</button>
             </div>
         </div>
     )

@@ -106,7 +106,7 @@ function Chart(props) {
                     <h1>Visualization of data</h1>
                 </div>
                 <div className="first_Chart">
-                    <h2>Your Monthly Expense & Revenue Comparison</h2>
+                    <h2>Your Monthly Expense & Income Comparison</h2>
                     <div className="candlechart">
                         <LineChart currentYear={currentYear} />
                     </div>
@@ -119,13 +119,13 @@ function Chart(props) {
                     </div>
                 </div>
                 <div className="second_Chart">
-                    <h2>Your Monthly Revenues</h2>
+                    <h2>Your Monthly Incomes</h2>
                     <div>
                         <PieChart data={revenueData} getMethod={RevenuesEachMonth} setYear={setYear}  year={year} labelMonth={labelMonth} />
                     </div>
                 </div>
                 <div className="first_Chart">
-                    <h2>Your Daily Expense & Revenue Comparison</h2>
+                    <h2>Your Daily Expense & Income Comparison</h2>
                     <div className="candlechart">
                         <BarChart getMethod={callRevenueExpenseMethod} monthYear={monthYear} setMonthYear={setMonthYear} revenueDayData={revenueDayData} expenseDayData={expenseDayData} labelMonth={labelMonth} />
                     </div>

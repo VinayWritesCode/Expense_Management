@@ -63,7 +63,7 @@ function Login() {
               <div className="forms-container">
                   <div className="signin-signup sign-in">
                       <form onSubmit={handleSubmit} className="sign-in-form">
-                          <h2 className="title">Login in</h2>
+                          <h2 className="title">Sign in</h2>
                           <div className="input-field">
                               <i className="fa fa-envelope" aria-hidden="true"></i>
                               <input type="text" placeholder="Email" value={login.email} name="email" onChange={(e) => handleChange(e)}/>

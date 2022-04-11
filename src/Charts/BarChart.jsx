@@ -34,7 +34,7 @@ function BarChart(props) {
     return { "amount": item.Amount, "day": item.Day, "type": "Expense", "color":"rgba(255, 99, 132, 0.4)"};
   })
   const revenue = revenueDayData.message.map(item => {
-    return { "amount": item.Amount, "day": item.Day, "type": "Revenue", "color":"rgba(255, 255, 255, 0.4)" };
+    return { "amount": item.Amount, "day": item.Day, "type": "Income", "color":"rgba(255, 255, 255, 0.4)" };
   })
 
   const data = expense.concat(revenue);
@@ -80,7 +80,7 @@ function BarChart(props) {
     plugins: {
       title: {
         display: true,
-        text: 'Expense (Left Side) And Revenue (Right Side)',
+        text: 'Expense (Left Side) And Income (Right Side)',
       },
     },
 

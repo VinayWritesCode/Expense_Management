@@ -29,7 +29,7 @@ function RevenueForm(props) {
                     console.log(result.data)
                     if (result.data.status === "true") {
 
-                        alert("New Expense information added successfully");
+                        alert("New Income information added successfully");
                         revenueForm();
                     }
                     else {
@@ -45,7 +45,6 @@ function RevenueForm(props) {
         }
         const onChange = (e) => {
             setRevenueData({ ...revenueData, [e.target.name]: e.target.value })
-            console.log(e.target.value);
         }
 
   return (
@@ -55,7 +54,7 @@ function RevenueForm(props) {
               <table width="100%" cellPadding="15px" cellSpacing="30px" align="center">
                   <tbody>
                       <tr>
-                          <th colSpan="2" align='center' id="form-title">Revenue Form</th>
+                          <th colSpan="2" align='center' id="form-title">Income Form</th>
                       </tr>
                       <tr>
                           <th>Date :</th>
@@ -72,7 +71,7 @@ function RevenueForm(props) {
                       </tr>
                       <tr>
                           <td colSpan="2"><input type="button" className="input" style={{ cursor: "pointer" }}
-                              onClick={handleRevenueSubmit} value="Submit" /></td>
+                              onClick={handleRevenueSubmit} value="ADD" /></td>
                       </tr>
                   </tbody>
               </table>

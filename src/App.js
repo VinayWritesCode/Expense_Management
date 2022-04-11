@@ -14,6 +14,9 @@ import {
 } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import AdminLogin from "./components/admin/AdminLogin";
+import Admin from "./components/admin/Admin";
+
 
 
 function App() {
@@ -29,6 +32,8 @@ function App() {
           <Route exact path="/Profile" element={<Profile />} />
           <Route exact path="/Contact" element={<Contact />} /> 
           <Route exact path="/UpdateList" element={<UpdateList />} />
+          <Route exact path="/admin/AdminLogin" element={<AdminLogin />} />
+          <Route exact path="/admin/Home" element={<Admin />} />
           <Route path="*" element={ <Navigate to='/' />} />
       </Routes>
       </Router>

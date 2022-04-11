@@ -39,7 +39,7 @@ function ExpenseForm(props) {
                     expenseForm();
                 }
                 else {
-                    console.log(result.message);
+                    console.log(result.data.message);
                 }
             })
             .catch((err) => {
@@ -88,7 +88,7 @@ function ExpenseForm(props) {
                       <td><input type="text" className="input" placeholder="Add Remark" value={expenseData.Remark} name="Remark" onChange={(e) => onChange(e)} /></td>
                       </tr>
                       <tr>
-                          <td colSpan="2"><input type="button" className="input" style={{ cursor: "pointer" }} onClick={handleExpenseSubmit} value="Submit" /></td>
+                          <td colSpan="2"><input type="button" className="input" style={{ cursor: "pointer" }} onClick={handleExpenseSubmit} value="ADD" /></td>
                       </tr>
                   
               </table>

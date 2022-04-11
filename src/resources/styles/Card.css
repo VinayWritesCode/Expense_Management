@@ -5,6 +5,7 @@
     align-items: center;
     justify-content:space-around;
     grid-template-columns: auto auto auto auto;
+    
 } 
 
 
@@ -19,7 +20,7 @@
 
 .row2 {
     background-color: #020716f5;
-    padding: 2vh 1vw;
+    padding: 2.5vh 1.5vw;
     border-radius:0 0 25px 25px;
     
 }
@@ -30,9 +31,10 @@
     margin:5vh 2vw;
     box-shadow:  20px 20px 60px #610561,
              -20px -20px 60px #081438f5;
-            border-radius: 0 0 25px 25px;
+            border-radius: 25px;
    
 }
+
 
 @media only screen and (max-width: 600px) {
  

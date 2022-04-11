@@ -95,7 +95,7 @@ function UpdateList() {
       .catch((err) => {
         // Do somthing
       })
-    setListStatus("Revenues");
+    setListStatus("Incomes");
   }
 
     return (
@@ -106,7 +106,7 @@ function UpdateList() {
           </div>
           <div className="buttons">
             <input type="button" onClick={showExpenses} value="Expense" />
-            <input type="button" onClick={showRevenues} value="Revenue" />
+            <input type="button" onClick={showRevenues} value="Income" />
           </div>
         </div>
         

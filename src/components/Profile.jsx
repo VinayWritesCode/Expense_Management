@@ -44,7 +44,6 @@ function Profile() {
     await axios.post(url, params, config)
       .then((result) => {
         if (result.data.status === "true") {
-          console.log(result.data.message[0])
           setUserInfo(result.data.message[0])
           setScore({ "score": result.data.score, "stype": result.data.stype})
         }
@@ -112,7 +111,7 @@ function Profile() {
           <div className="profileinfo">
             <h1>Hi, {userInfo.first_name}</h1>
             <h3>Score : {score.score+"%"}({score.stype})</h3>
-            <p className="bio">" Score help you to identify your current year performance "</p>
+            <p className="bio">" Score help you to identify your current year performance as a person(beta version)"</p>
           </div>
         </div>
         
