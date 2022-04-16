@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {useState, useEffect } from 'react';
 import '../resources/styles/Card.css'
+import downArrow from '../images/downArrow.jpg'
 
 function Cards(props) {
 
@@ -100,7 +101,9 @@ function Cards(props) {
           <div className="cards">
           <div className="card">
               <div className="row1">
+                      <img src={downArrow} alt="" />
                       <h4>Total Expense ({currentYear})</h4>
+                      
               </div>
                   <div className="row2"><span id="totalExpense">{totalExpense}</span></div>
           </div>
@@ -113,6 +116,7 @@ function Cards(props) {
           </div>
           <div className="card">
               <div className="row1">
+                      <img src={downArrow} alt="" />
                       <h4> Expense ({labelMonth[currentMonth] + " " + currentYear})</h4>
               </div>
                   <div className="row2"><span id="thisMonthExpense">{TotalMonthExpenses}</span></div>

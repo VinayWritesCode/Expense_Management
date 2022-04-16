@@ -89,18 +89,21 @@ function Home() {
       })
   }
 
+
  
 
   return (
     <div className='home-container'>
-      <div className='home-top-container-vs'>
-        <div className="landing-page-title">
-          <h4>Manage your Expense with us !!</h4>
+      <div className="wrap-top">
+        <div className='home-top-container-vs'>
+          <div className="landing-page-title">
+            <h4>Manage your Expense with us !!</h4>
+          </div>
+          <div className="design">
+            <img src={img2} alt="" />
+          </div>
+
         </div>
-        <div className="design">
-          <img src={img2} alt="" />
-        </div>
-        
       </div>
         <div className='TopContents'>
           <div className="bottom">

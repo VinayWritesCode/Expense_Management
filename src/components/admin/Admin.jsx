@@ -4,6 +4,7 @@ import "../../resources/styles/admin.css";
 import Dashboard from './Dashboard';
 import Insight from './Insight';
 import UserMessage from './UserMessage';
+import Users from './Users';
 
 function Admin() {
   let navigate = useNavigate();
@@ -26,6 +27,10 @@ function Admin() {
     navigate("/admin/AdminLogin");
   }
 
+  const date = new Date();
+  const currentYear = date.getFullYear();
+  const currentMonth = date.getMonth();
+  
   return (
     <div className='admin-container'>
 
@@ -68,13 +73,12 @@ function Admin() {
                     </button>
                 </div>
               </Link>
-              <Link to="#Docs" className='no-decoration-vs'>
+              <Link to="#Users" className='no-decoration-vs'>
                 <div className="flex-col-vs">
-                  <button className='no-btn' onClick={() => setContent("Docs")}>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
-                  </svg>
-                  <span>Docs</span>
+                  <button className='no-btn' onClick={() => setContent("Users")}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="#fff" /><circle cx="128" cy="120" r="44" /><path  d="M128,24A104,104,0,1,0,232,128,104.11791,104.11791,0,0,0,128,24Zm65.75806,162.41016a79.70266,79.70266,0,0,0-24.43091-22.97461,59.83641,59.83641,0,0,1-82.6543,0A79.7048,79.7048,0,0,0,62.2417,186.41016a88.00015,88.00015,0,1,1,131.51636,0Z" />
+                    </svg>
+                  <span>Users</span>
                   </button>
                 </div>
               </Link>
@@ -102,7 +106,7 @@ function Admin() {
           
           <div>
             {
-              (content === "Dashboard") ? <><div className="topAdminBar"><h5 id='adminName'><span>Hi </span> , {adminName} </h5></div><Dashboard labelMonth={labelMonth} /> </> : (content === "Message") ? <UserMessage /> : (content === "Insight") ? < Insight/> : ""
+              (content === "Dashboard") ? <><div className="topAdminBar"><h5 id='adminName'><span>Hi </span> , {adminName} </h5></div><Dashboard currentYear={currentYear} currentMonth={currentMonth} labelMonth={labelMonth} /> </> : (content === "Message") ? <UserMessage /> : (content === "Insight") ? < Insight currentYear={currentYear} currentMonth={currentMonth} labelMonth={labelMonth} /> : (content === "Users") ? <Users labelMonth={labelMonth} /> : ""
             }
           </div>
         </section>

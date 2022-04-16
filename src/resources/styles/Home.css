@@ -1,12 +1,19 @@
+.wrap-top {
+background: url(../../images/bg4.svg);
+}
+
 
 .home-top-container-vs {
   display: grid;
   grid-template-columns: auto auto;
-background: url(../../images/bg3.jpg) ;
+  background-color: #260c2689;
+  
 }
 
+
+
 .TopContents {
-    margin-top: 5.5vh;
+    margin-top: 9.5vh;
 }
 
 .landing-page-title {

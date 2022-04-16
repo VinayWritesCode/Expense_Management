@@ -9,6 +9,10 @@
     justify-content: center;
 }
 
+.chart {
+    background: transparent;
+}
+
 
 
 .space-tb input{

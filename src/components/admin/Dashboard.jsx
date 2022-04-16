@@ -5,11 +5,8 @@ import axios from 'axios';
 
 function Dashboard(props) {
  
-  const { labelMonth } = props; 
+  const { currentYear, currentMonth, labelMonth } = props; 
 
-  const date = new Date();
-  const currentYear = date.getFullYear();
-  const currentMonth = date.getMonth();
  
   const [cardData, setCardData] = useState({ "title1": "Total Users", "title2": "New Users (" + labelMonth[currentMonth]+")", "title3": "Total Expense Record (Users)","title4": "Total Revenue Record (Users)","title5": "Total Messages", "num1": 0, "num2": 0, "num3": 0, "num4": 0,"num5": 0});
 
@@ -35,7 +32,6 @@ function Dashboard(props) {
         await axios.post(url, params, config)
             .then((result) => {
                 if (result.data.status === "true") {
-                    console.log(result.data.result1[0].TotalUser);
                   setCardData({ ...cardData,
                      "num1": result.data.result1[0].TotalUser, 
                     "num2": result.data.result2[0].NewUserMonth,
@@ -49,7 +45,7 @@ function Dashboard(props) {
                 }
             })
             .catch((err) => {
-                alert("Sorry, Server Error");
+              alert("Sorry, Cannot fetch Data");
             })
 
 
@@ -67,10 +63,8 @@ function Dashboard(props) {
           < AdminCard title={cardData.title5} number={cardData.num3} />
           < AdminCard title={cardData.title3} number={cardData.num4} />
            < AdminCard title={cardData.title4} number={cardData.num5} />
+         
         </div>
-       
-        
-        
       </div>
     </div>
   )

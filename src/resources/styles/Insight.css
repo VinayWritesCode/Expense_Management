@@ -1,0 +1,16 @@
+.content-insight {
+    margin-left: 32vw;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .content-insight {
+        margin: 0 0 0 10vw ;
+
+    }
+
+    
+    
+}
