@@ -94,6 +94,7 @@ function UpdateList() {
       })
       .catch((err) => {
         // Do somthing
+        console.log("Server Error : status" + status)
       })
     setListStatus("Incomes");
   }

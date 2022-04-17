@@ -1,6 +1,6 @@
 .container-profile{
     box-sizing: border-box;
-    padding: 0;
+    padding:0;
     margin: 0;
     background-color: #140327;
 } 
@@ -26,7 +26,7 @@
     display: block;
     width: 700px;
     height: 300px;
-    background: linear-gradient(#1c1639,#0a0112);
+    background: linear-gradient(#251d4e,#0a0112);
     border-radius: 50%;
     position: absolute;
     margin-left: 30vw;

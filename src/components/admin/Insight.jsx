@@ -36,8 +36,9 @@ function Insight(props) {
         }
       })
       .catch((err) => {
-        
+        console.log("current Month "+currentMonth);
       })
+      
   }
 
   return (

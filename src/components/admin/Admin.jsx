@@ -30,6 +30,7 @@ function Admin() {
   const date = new Date();
   const currentYear = date.getFullYear();
   const currentMonth = date.getMonth();
+  setLabelMonth(labelMonth)
   
   return (
     <div className='admin-container'>

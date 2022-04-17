@@ -37,11 +37,13 @@ function Cards(props) {
                     if (result.data.status1 === "true") {
                         result.data.message1.map(item => {
                             setTotalExpense(item.ExpenseAmount);
+                            return 0;
                         })
                     }
                     if (result.data.status2 === "true") {
                         result.data.message2.map(item => {
                             setTotalRevenue(item.RevenueAmount);
+                            return 0;
                         })
                     }
                     
@@ -74,11 +76,13 @@ function Cards(props) {
                     if (result.data.status1 === "true") {
                         result.data.message1.map(item => {
                             setTotalMonthExpenses(item.Amount);
+                            return 0;
                         })
                     }
                     if (result.data.status2 === "true") {
                         result.data.message2.map(item => {
                             setTotalMonthRevenues(item.Amount);
+                            return 0;
                         })
                     }
 

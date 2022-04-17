@@ -11,6 +11,7 @@ import axios from 'axios';
 
 function Home() {
   let navigate = useNavigate();
+  
   useEffect(() => {
 
     if (localStorage.getItem('token')) {
@@ -21,6 +22,7 @@ function Home() {
     }
     ExpensesEachMonth();
     RevenuesEachMonth();
+    
     // eslint-disable-next-line
   }, [])
 
@@ -86,8 +88,11 @@ function Home() {
       })
       .catch((err) => {
         // Do somthing
+        setLabelMonth(labelMonth)
       })
   }
+
+
 
 
  
@@ -97,7 +102,7 @@ function Home() {
       <div className="wrap-top">
         <div className='home-top-container-vs'>
           <div className="landing-page-title">
-            <h4>Manage your Expense with us !!</h4>
+            <h4 id="type-text">Hi,<br /> <span>W</span>elcome to <span>W</span>orld <span>B</span>est <span>P</span>ersonal <span>B</span>udget <span>T</span>racker <span>W</span>ebsite </h4>
           </div>
           <div className="design">
             <img src={img2} alt="" />
@@ -105,12 +110,14 @@ function Home() {
 
         </div>
       </div>
+      
         <div className='TopContents'>
           <div className="bottom">
             <Cards labelMonth={labelMonth} currentYear={currentYear} currentMonth={currentMonth} />
             <MainForm />
           </div>
       </div>
+      
       <Chart labelMonth={labelMonth} expenseData={expenseData} revenueData={revenueData} ExpensesEachMonth={ExpensesEachMonth} RevenuesEachMonth={RevenuesEachMonth} status={status} currentYear={currentYear} year={year} setYear={setYear} />
     </div>
   )

@@ -3,14 +3,12 @@ import "../../resources/styles/Users.css"
 import profilePic from '../../images/profilePic.jpg';
 
 function UserCard(props) {
-    const { data, labelMonth } = props;
-    const day =  "22"
-    const month = labelMonth[3];
-    const year = "2022"
+    const { data, labelMonth,handleDelete } = props;
+    const day =  data.Day;
+    const month = labelMonth[data.Month-1];
+    const year = data.Year;
 
-    const handleDelete = async (e) => {
-        console.log(e.target.name);
-    }
+    
   return (
       <div className="card-user">
           {(data.profile_photo) ? <img src={`data:image/jpeg;base64,${data.profile_photo}`} alt="" className="card__image" /> : <img src={profilePic} alt="" className="card__image" /> }

@@ -1,6 +1,10 @@
 import React from 'react';
 import ExpenseForm from './ExpenseForm';
 import RevenueForm from './RevenueForm';
+import {
+    PushToTalkButton,
+    BigTranscript
+} from "@speechly/react-ui";
 
 
 function MainForm() {
@@ -28,11 +32,16 @@ function MainForm() {
             <div className="Forms1 toggleclose">
                 <div className="ExpenseForm toggleclose">
                     <ExpenseForm expenseForm={expenseForm} />
+                        <PushToTalkButton placement="bottom" captureKey=" " />
+                        <BigTranscript placement="bottom" />
+                       
                 </div>
             </div>
             <div className="Forms2 toggleclose">
                 <div className="RevenueForm toggleclose">
                     <RevenueForm revenueForm={revenueForm} />
+                        <PushToTalkButton placement="bottom" captureKey=" " />
+                        <BigTranscript placement="bottom" />
                 </div>
             </div>
             </div>

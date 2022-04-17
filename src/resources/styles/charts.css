@@ -1,7 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
+
+.title-chart {  
+    font-family: 'Baloo Paaji 2',
+    
+}
+
+.first_Chart{
+    background-color: transparent;
+    padding: 5px;
+}
+ 
 .myPieChart {
     padding: 20px;
     width: 45vw;
     height: auto;
+    
 }
 .PieContent, .BarContent {
     width: 100%;
@@ -31,16 +44,29 @@
 }
 
 @media only screen and (max-width: 650px) {
-    .myBarChart {
-    width: 100%;
+    .myBarChart ,.myLineChart {
+    width: 100vw;
+    height: 30vh;
     display: flex;
-    align-items: center;
+    justify-content: center;
+}
+
+.myLineChart {
+    margin-left: -32px;
+    padding: 5px;
 }
 
 .myPieChart {
     width: 95vw;
     height: auto;
-    
+}
+
+.chart {
+    margin: 5vh 0 5vh -8px;
+}
+
+.title-chart {
+   font-size: .6em;
 }
 
 

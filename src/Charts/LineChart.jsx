@@ -166,8 +166,9 @@ function LineChart(props) {
     };
 
     const options = {
+        responsive: true,
         scales: {
-            y: {
+            x: {
                 beginAtZero: true
             }
         }
@@ -175,7 +176,7 @@ function LineChart(props) {
 
 
   return (
-    <div>
+      <div className='myLineChart'>
           <Line data={data} options={options} />
     </div>
   )

@@ -1,8 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
+
+/* input search user */
+.inputSearch {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-content: center;
+  margin-left: 15vw;
+  padding: 5vh 10vw;
+}
+
+.title {
+  animation: shadowAnimation 5s ease-in infinite;
+}
+
+
+
+.inputSearch input, .inputSearch select,.inputSearch button{
+  margin: 8px;
+  padding: 5px 15px;
+}
+
+
+
+.inputSearch button{
+  padding: 5px 25px;
+  background-color: rgba(38, 4, 60, 0.651);
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.inputSearch button:focus, .inputSearch button:hover {
+  color: #ffff0f;
+}
+
 
 
 /* card */
 
-@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
 
 .container-user {
   display: grid;
@@ -133,9 +168,21 @@
 
 
 
+
 /* card end */
 
+
+@keyframes shadowAnimation {
+  50% {
+    text-shadow: 0 10px 50px rgb(237, 162, 197);
+  }
+}
+
 @media only screen and (max-width: 600px) {
+
+  .inputSearch {
+    grid-template-columns: auto ;
+  }
 
    .container-user {
       grid-template-columns: auto ;

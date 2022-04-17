@@ -1,11 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useSpeechContext } from "@speechly/react-client";
 
 function RevenueForm(props) {
     const { revenueForm } = props;
     const [revenueData, setRevenueData] = useState({ datetime: "", Amount: "", Remark: "" });
-
+    const { segment } = useSpeechContext();
     
+    useEffect(() => {
+        if (segment) {
+            // Handle speech segment and make tentative changes to app state
+            segment.entities.forEach((e) => {
+                switch (e.type) {
+                    case 'amount':
+                        setRevenueData({ ...revenueData, Amount: e.value })
+                        break;
+
+                    case 'date':
+                        setRevenueData({ ...revenueData, datetime: e.value })
+                        console.log(e.value)
+                        break;
+
+                    default:
+                        break;
+                }
+            });
+            if (segment.isFinal) {
+                // Handle speech segment and make permanent changes to app state
+            }
+
+        }
+        // eslint-disable-next-line
+    }, [segment])
+
+
         const handleRevenueSubmit = async (e) => {
             e.preventDefault();
             if (revenueData.datetime && revenueData.Amount) {

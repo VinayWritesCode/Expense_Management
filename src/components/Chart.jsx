@@ -85,7 +85,7 @@ function Chart(props) {
                 }
             })
             .catch((err) => {
-                // Do somthing
+                console.log(status)
             })
     }
 
@@ -103,7 +103,19 @@ function Chart(props) {
         <div>
             <div className="chart">
                 <div className="title-chart">
-                    <h1>Visualization of data</h1>
+                    <h1>VISUALIZATION OF DATA</h1>
+                </div>
+                <div className="second_Chart">
+                    <h2>Your Monthly Expenses</h2>
+                    <div>
+                        <PieChart data={expenseData} getMethod={ExpensesEachMonth} setYear={setYear} year={year} labelMonth={labelMonth} />
+                    </div>
+                </div>
+                <div className="second_Chart">
+                    <h2>Your Monthly Incomes</h2>
+                    <div>
+                        <PieChart data={revenueData} getMethod={RevenuesEachMonth} setYear={setYear} year={year} labelMonth={labelMonth} />
+                    </div>
                 </div>
                 <div className="first_Chart">
                     <h2>Your Monthly Expense & Income Comparison</h2>
@@ -112,24 +124,15 @@ function Chart(props) {
                     </div>
                 </div>
 
-                <div className="second_Chart">
-                    <h2>Your Monthly Expenses</h2>
-                    <div>
-                        <PieChart data={expenseData} getMethod={ExpensesEachMonth} setYear={setYear}  year={year} labelMonth={labelMonth} />
-                    </div>
-                </div>
-                <div className="second_Chart">
-                    <h2>Your Monthly Incomes</h2>
-                    <div>
-                        <PieChart data={revenueData} getMethod={RevenuesEachMonth} setYear={setYear}  year={year} labelMonth={labelMonth} />
-                    </div>
-                </div>
                 <div className="first_Chart">
                     <h2>Your Daily Expense & Income Comparison</h2>
                     <div className="candlechart">
                         <BarChart getMethod={callRevenueExpenseMethod} monthYear={monthYear} setMonthYear={setMonthYear} revenueDayData={revenueDayData} expenseDayData={expenseDayData} labelMonth={labelMonth} />
                     </div>
                 </div>
+
+              
+                
 
             </div>
         </div>
