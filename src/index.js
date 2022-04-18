@@ -4,12 +4,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { SpeechProvider } from "@speechly/react-client";
 
+
 ReactDOM.render(
+
+  <SpeechProvider appId="266ebadb-39f5-4720-88fe-a0b0c5a1877a">
  <React.StrictMode>
-    <SpeechProvider appId="266ebadb-39f5-4720-88fe-a0b0c5a1877a">
     <App />
-  </SpeechProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
+  </SpeechProvider>,
   document.getElementById('root')
 );
 

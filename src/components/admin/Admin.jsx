@@ -30,7 +30,6 @@ function Admin() {
   const date = new Date();
   const currentYear = date.getFullYear();
   const currentMonth = date.getMonth();
-  setLabelMonth(labelMonth)
   
   return (
     <div className='admin-container'>
@@ -102,18 +101,18 @@ function Admin() {
 
         </div>
       </aside>
-      <div className="right-content">
+  <div className="right-content">
         <section>
           
           <div>
             {
-              (content === "Dashboard") ? <><div className="topAdminBar"><h5 id='adminName'><span>Hi </span> , {adminName} </h5></div><Dashboard currentYear={currentYear} currentMonth={currentMonth} labelMonth={labelMonth} /> </> : (content === "Message") ? <UserMessage /> : (content === "Insight") ? < Insight currentYear={currentYear} currentMonth={currentMonth} labelMonth={labelMonth} /> : (content === "Users") ? <Users labelMonth={labelMonth} /> : ""
+              (content === "Dashboard") ? <><div className="topAdminBar"><h5 id='adminName'><span>Hi </span> , {adminName} </h5></div><Dashboard currentYear={currentYear} currentMonth={currentMonth} labelMonth={labelMonth} /> </> : (content === "Message") ? <UserMessage /> : (content === "Insight") ? < Insight currentYear={currentYear} currentMonth={currentMonth} labelMonth={labelMonth} setLabelMonth={setLabelMonth}/> : (content === "Users") ? <Users labelMonth={labelMonth} /> : ""
             }
           </div>
         </section>
         
-      </div>
     </div>
+          </div>
   )
 }
 

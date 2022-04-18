@@ -14,7 +14,7 @@ function Insight(props) {
      // eslint-disable-next-line
    }, [])
    
-
+  
   const DoughnutData = async () => {
     const url = `http://localhost:8808/Server_Expense_Management/api/UserData/admin/Insight.php`;
     const params = new URLSearchParams()

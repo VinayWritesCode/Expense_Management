@@ -4,13 +4,15 @@ import Chart from './Chart';
 import MainForm from './MainForm';
 import '../resources/styles/Home.css';
 import img2 from '../images/img2.svg';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 
 
 
 function Home() {
   let navigate = useNavigate();
+  let location = useLocation();
   
   useEffect(() => {
 
@@ -95,7 +97,11 @@ function Home() {
 
 
 
- 
+  if (location.pathname === "/admin/Home" || location.pathname === "/admin/AdminLogin") {
+
+    return <></>
+  }
+  else{
 
   return (
     <div className='home-container'>
@@ -114,13 +120,16 @@ function Home() {
         <div className='TopContents'>
           <div className="bottom">
             <Cards labelMonth={labelMonth} currentYear={currentYear} currentMonth={currentMonth} />
+          
             <MainForm />
+           
           </div>
       </div>
       
       <Chart labelMonth={labelMonth} expenseData={expenseData} revenueData={revenueData} ExpensesEachMonth={ExpensesEachMonth} RevenuesEachMonth={RevenuesEachMonth} status={status} currentYear={currentYear} year={year} setYear={setYear} />
     </div>
   )
+}
 }
 
 export default Home
