@@ -9,6 +9,7 @@ function RevenueForm(props) {
     
     useEffect(() => {
         if (segment) {
+            
             // Handle speech segment and make tentative changes to app state
             segment.entities.forEach((e) => {
                 switch (e.type) {
