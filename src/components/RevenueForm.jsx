@@ -6,10 +6,10 @@ function RevenueForm(props) {
     const { revenueForm } = props;
     const [revenueData, setRevenueData] = useState({ datetime: "", Amount: "", Remark: "" });
     const { segment } = useSpeechContext();
-    
+
     useEffect(() => {
         if (segment) {
-            
+
             // Handle speech segment and make tentative changes to app state
             segment.entities.forEach((e) => {
                 switch (e.type) {
@@ -35,9 +35,9 @@ function RevenueForm(props) {
     }, [segment])
 
 
-        const handleRevenueSubmit = async (e) => {
-            e.preventDefault();
-            if (revenueData.datetime && revenueData.Amount) {
+    const handleRevenueSubmit = async (e) => {
+        e.preventDefault();
+        if (revenueData.datetime && revenueData.Amount) {
             const url = `http://localhost:8808/Server_Expense_Management/api/UserData/addData/addRevenue.php`;
 
             const params = new URLSearchParams()
@@ -68,45 +68,45 @@ function RevenueForm(props) {
                 .catch((err) => {
                     alert("Unsuccessful");
                 })
-            } else {
-                alert("Please enter your data");
-            }
+        } else {
+            alert("Please enter your data");
         }
-        const onChange = (e) => {
-            setRevenueData({ ...revenueData, [e.target.name]: e.target.value })
-        }
+    }
+    const onChange = (e) => {
+        setRevenueData({ ...revenueData, [e.target.name]: e.target.value })
+    }
 
-  return (
-    <div>
-          <button id="close" onClick={revenueForm}>x</button>
-          <form>
-              <table width="100%" cellPadding="15px" cellSpacing="30px" align="center">
-                  <tbody>
-                      <tr>
-                          <th colSpan="2" align='center' id="form-title">Income Form</th>
-                      </tr>
-                      <tr>
-                          <th>Date :</th>
-                          <td><input type="date" className="input" value={revenueData.datetime} name="datetime" onChange={(e) => onChange(e)} required/></td>
-                      </tr>
-                      <tr>
-                          <th>Amount :</th>
-                          <td><input type="text" placeholder="Enter Amount" className="input" value={revenueData.Amount} name="Amount" onChange={(e) => onChange(e)} required /></td>
-                      </tr>
+    return (
+        <div>
+            <button id="close" onClick={revenueForm}>x</button>
+            <form>
+                <table width="100%" cellPadding="15px" cellSpacing="30px" align="center">
+                    <tbody>
+                        <tr>
+                            <th colSpan="2" align='center' id="form-title">Income Form</th>
+                        </tr>
+                        <tr>
+                            <th>Date :</th>
+                            <td><input type="date" className="input" value={revenueData.datetime} name="datetime" onChange={(e) => onChange(e)} required /></td>
+                        </tr>
+                        <tr>
+                            <th>Amount :</th>
+                            <td><input type="text" placeholder="Enter Amount" className="input" value={revenueData.Amount} name="Amount" onChange={(e) => onChange(e)} required /></td>
+                        </tr>
 
-                      <tr>
-                          <th>Remark :</th>
-                          <td><input type="text" className="input" placeholder="Add Remark" value={revenueData.Remark} name="Remark" onChange={(e) => onChange(e)} /></td>
-                      </tr>
-                      <tr>
-                          <td colSpan="2"><input type="button" className="input" style={{ cursor: "pointer" }}
-                              onClick={handleRevenueSubmit} value="ADD" /></td>
-                      </tr>
-                  </tbody>
-              </table>
-          </form>
-    </div>
-  )
+                        <tr>
+                            <th>Remark :</th>
+                            <td><input type="text" className="input" placeholder="Add Remark" value={revenueData.Remark} name="Remark" onChange={(e) => onChange(e)} /></td>
+                        </tr>
+                        <tr>
+                            <td colSpan="2"><input type="button" className="input" style={{ cursor: "pointer" }}
+                                onClick={handleRevenueSubmit} value="ADD" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    )
 }
 
 export default RevenueForm
