@@ -6,50 +6,52 @@ import '../resources/styles/ListItem.css';
 
 
 function ListItems(props) {
-   
-  const { data, status, setData, setShowUpdate, refreshPage } = props;
-  
+
+  const { data, status, setData, setShowUpdate, showRevenues, showExpenses} = props;
 
 
-  const handleExpenseDelete = async (e)=> {
+
+  const handleExpenseDelete = async (e) => {
     const spendid = e.target.name;
-      const url = `http://localhost:8808/Server_Expense_Management/api/UserData/deleteData/deleteExpense.php`;
-      const params = new URLSearchParams()
-      params.append('token', localStorage.getItem('token'))
-      params.append('spendid', spendid)
-      const config = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        }
+    const url = `http://localhost:8808/Server_Expense_Management/api/UserData/deleteData/deleteExpense.php`;
+    const params = new URLSearchParams()
+    params.append('token', localStorage.getItem('token'))
+    params.append('spendid', spendid)
+    const config = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
       }
-
-      await axios.post(url, params, config)
-        .then((result) => {
-          console.log(result)
-          if (result.data.status === "true") {
-            alert("Deleted Successfully")
-            refreshPage();
-          }
-          else {
-            alert(result.data.message);
-          }
-        })
-        .catch((err) => {
-          // Do somthing
-        })
     }
+
+    await axios.post(url, params, config)
+      .then((result) => {
+        console.log(result)
+        if (result.data.status === "true") {
+          alert("Deleted Successfully")
+          showExpenses()
+        }
+        else {
+          alert(result.data.message);
+        }
+      })
+      .catch((err) => {
+        // Do somthing
+      })
+  }
 
   const handleExpenseEdit = async (item) => {
 
-      setData(item);
-    setShowUpdate({ status: "true",
+    setData(item);
+    setShowUpdate({
+      status: "true",
       type: "Expense"
     })
-      
+
   }
 
   const handleRevenueDelete = async (e) => {
     const recievedid = e.target.name;
+    
     const url = `http://localhost:8808/Server_Expense_Management/api/UserData/deleteData/deleteRevenue.php`;
     const params = new URLSearchParams()
     params.append('token', localStorage.getItem('token'))
@@ -66,12 +68,11 @@ function ListItems(props) {
         console.log(result)
         if (result.data.status === "true") {
           alert("Deleted Successfully")
-          refreshPage();
+          showRevenues();
         }
         else {
-          
+
           alert(result.data.message);
-          console.log(result);
         }
       })
       .catch((err) => {
@@ -90,8 +91,8 @@ function ListItems(props) {
   return (
     <div>
       <div className="listCard"  >
-            <table cellPadding={20} cellSpacing={25} align={"center"} >
-            
+        <table cellPadding={20} cellSpacing={25} align={"center"} >
+
           {(status === "Expenses") ? <>{
             data.map(item => {
               return <div key={item.spendid}>
@@ -101,20 +102,20 @@ function ListItems(props) {
                   <th>Amount Spend</th>
                   <th>Remark</th>
                 </tr>
-              <tr>
-                <td>{item.datetime}</td>
-                <td>{item.Type}</td>
-                <td>{item.Amount}</td>
-                <td>{item.Remark}</td>
-                <td colSpan={2}>
-                    <input type="button" value="Delete" name={item.spendid} onClick={(e)=>{handleExpenseDelete(e)}} style={{ margin: "10px" }} />
+                <tr>
+                  <td>{item.datetime}</td>
+                  <td>{item.Type}</td>
+                  <td>{item.Amount}</td>
+                  <td>{item.Remark}</td>
+                  <td colSpan={2}>
+                    <input type="button" value="Delete" name={item.spendid} onClick={(e) => { handleExpenseDelete(e) }} style={{ margin: "10px" }} />
                     <input type="button" value="Update" name={item.spendid} onClick={(e) => { handleExpenseEdit(item) }} style={{ margin: "10px" }} />
-                </td>
-              </tr>
+                  </td>
+                </tr>
                 <tr> <td colSpan={6}><hr /></td></tr>
               </div>
             })
-          } </>:""
+          } </> : ""
           }
 
           {
@@ -131,18 +132,18 @@ function ListItems(props) {
                     <td>{item.Amount}</td>
                     <td>{item.Remark}</td>
                     <td colSpan={2}>
-                      <input type="button" value="Delete" name={item.recieved_id} onClick={(e) => {handleRevenueDelete(e)}} style={{ margin: "10px" }} />
-                      <input type="button" value="Update" name={item.recieved_id} onClick={(e)=>{handleRevenueEdit(item)}} style={{ margin: "10px" }} />
+                      <input type="button" value="Delete" name={item.recieved_id} onClick={(e) => { handleRevenueDelete(e) }} style={{ margin: "10px" }} />
+                      <input type="button" value="Update" name={item.recieved_id} onClick={(e) => { handleRevenueEdit(item) }} style={{ margin: "10px" }} />
                     </td>
                   </tr>
                   <tr> <td colSpan={5}><hr /></td></tr>
                 </div>
               })
-            }</> : "" 
+            }</> : ""
           }
-          
-            </table>
-        </div>
+
+        </table>
+      </div>
     </div>
   )
 }

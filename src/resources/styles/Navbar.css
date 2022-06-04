@@ -16,10 +16,23 @@ nav > ul {
 
 nav > ul > li {
     display: inline-block;
-    margin:2vh 5vw;
+    margin: 4vh 5vw;
     list-style: none;
     cursor: pointer;
     padding-bottom: 1px;
+}
+
+nav>ul>li:nth-child(0) {
+    margin-left: 10vw;
+}
+
+#LogoImage {
+    width: 45px;
+    height: 45px;
+    margin: 2vh 0 2vh -130px;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 8px;
 }
 
 .btn {
@@ -43,4 +56,24 @@ nav > ul > li {
 Link{
     text-transform: uppercase;
     text-decoration: none;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+nav>ul>li {
+    margin: 2vh 5vw;
+}
+nav>ul>li:nth-child(1){
+    margin-left: 16px;
+}
+
+#LogoImage {
+    width: 40px;
+    height: 40px;
+    margin: 2vh 0 2vh 15px;
+   
+}
+
 }

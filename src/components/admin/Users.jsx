@@ -1,13 +1,13 @@
 import axios from 'axios';
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import UserCard from './UserCard';
 
 
 function Users(props) {
 
-  const {labelMonth} = props;
-  const [userInfo, setUserInfo] = useState([{"first_name":"", "last_name":"","age": "", "email":"", "profile_photo":""}]);
-  const [searchUser, setSearchUser] = useState({ "firstName": "", "lastName": "", "searchBy": "searchAll"})
+  const { labelMonth } = props;
+  const [userInfo, setUserInfo] = useState([{ "first_name": "", "last_name": "", "age": "", "email": "", "profile_photo": "" }]);
+  const [searchUser, setSearchUser] = useState({ "firstName": "", "lastName": "", "searchBy": "searchAll" })
   useEffect(() => {
     fetchUser();
     // eslint-disable-next-line
@@ -16,12 +16,12 @@ function Users(props) {
   const fetchUser = async () => {
     let firstName = "";
     let lastName = "";
-    if(searchUser.searchBy === "both"){
+    if (searchUser.searchBy === "both") {
       firstName = searchUser.firstName;
       lastName = searchUser.lastName;
-    } else if (searchUser.searchBy === "firstName"){
+    } else if (searchUser.searchBy === "firstName") {
       firstName = searchUser.firstName;
-    } else if (searchUser.searchBy === "lastName"){
+    } else if (searchUser.searchBy === "lastName") {
       lastName = searchUser.lastName;
     }
 
@@ -40,7 +40,7 @@ function Users(props) {
     await axios.post(url, params, config)
       .then((result) => {
         if (result.data.status === "true") {
-             setUserInfo(result.data.message);
+          setUserInfo(result.data.message);
         }
         else {
           alert("Sorry, No Data");
@@ -74,7 +74,7 @@ function Users(props) {
     await axios.post(url, params, config)
       .then((result) => {
         if (result.data.status === "true") {
-           alert("Deleted Successfully")
+          alert("Deleted Successfully")
         }
         else {
           alert("Sorry, No Data");
@@ -92,50 +92,50 @@ function Users(props) {
     setSearchUser({ ...searchUser, [e.target.name]: e.target.value });
   }
 
-  
 
 
-    return (
-      <>
-        
-        <div className="title">
-          <h5>Website Users</h5>
-        </div>
-        <div className="searchUsers">
-          
-          <div className="inputSearch">
-            <div className="select-Search">
-              Search By
-              <select name="searchBy" className='input' onChange={e => setSearchUser({ ...searchUser, [e.target.name]: e.target.value })}>
 
-                <option value="searchAll" >Search All</option>
-                <option value="firstName">First Name</option>
-                <option value="lastName">Last Name</option>
-                <option value="both">Full Name</option>
-              </select>
-            </div>
-          {
-          (searchUser.searchBy === "firstName" || searchUser.searchBy === "both") ? <input type="text" name="firstName" className='input' value={searchUser.firstName} placeholder='Enter First Name' onChange={e => handleChange(e)} /> : ""
-          }
-          {
-              (searchUser.searchBy === "lastName" || searchUser.searchBy === "both") ? <input type="text" name="lastName" className='input' value={searchUser.lastName} placeholder='Enter Last Name' onChange={e => handleChange(e)} /> : ""
-          }
-            <button onClick={search}>Search</button>
+  return (
+    <>
+
+      <div className="title">
+        <h5>Website Users</h5>
+      </div>
+      <div className="searchUsers">
+
+        <div className="inputSearch">
+          <div className="select-Search">
+            Search By
+            <select name="searchBy" className='input' onChange={e => setSearchUser({ ...searchUser, [e.target.name]: e.target.value })}>
+
+              <option value="searchAll" >Search All</option>
+              <option value="firstName">First Name</option>
+              <option value="lastName">Last Name</option>
+              <option value="both">Full Name</option>
+            </select>
           </div>
-        
-        </div>
-        <div className="container-user">
-
           {
-            userInfo.map(item => {
-              return <div key={(Math.random() * 10) + item.user_id}>
-                <UserCard data={item} labelMonth={labelMonth} handleDelete={handleDelete}/>
-              </div>
-            })
+            (searchUser.searchBy === "firstName" || searchUser.searchBy === "both") ? <input type="text" name="firstName" className='input' value={searchUser.firstName} placeholder='Enter First Name' onChange={e => handleChange(e)} /> : ""
           }
+          {
+            (searchUser.searchBy === "lastName" || searchUser.searchBy === "both") ? <input type="text" name="lastName" className='input' value={searchUser.lastName} placeholder='Enter Last Name' onChange={e => handleChange(e)} /> : ""
+          }
+          <button onClick={search}>Search</button>
         </div>
-        </>
-    )
+
+      </div>
+      <div className="container-user">
+
+        {
+          userInfo.map(item => {
+            return <div key={(Math.random() * 10) + item.user_id}>
+              <UserCard data={item} labelMonth={labelMonth} handleDelete={handleDelete} />
+            </div>
+          })
+        }
+      </div>
+    </>
+  )
 }
 
 export default Users

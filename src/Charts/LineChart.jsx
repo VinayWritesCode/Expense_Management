@@ -1,4 +1,4 @@
-import React, {useState , useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Line } from 'react-chartjs-2';
 import { Chart, PointElement, registerables } from 'chart.js';
 import axios from 'axios';
@@ -21,7 +21,7 @@ function LineChart(props) {
         RevenuesEachMonth();
         // eslint-disable-next-line
     }, [])
-    
+
 
     const ExpensesEachMonth = async () => {
         const url = `http://localhost:8808/Server_Expense_Management/api/UserData/getData/getExpenseEachMonth.php`;
@@ -40,8 +40,8 @@ function LineChart(props) {
                     let i = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                     for (let j = 0; j < result.data.message.length; j++) {
                         let month = parseInt(result.data.message[j].Month);
-                                i[month] = result.data.message[j].Amount;
-                        }
+                        i[month] = result.data.message[j].Amount;
+                    }
                     setLineChartExpenseData(i);
                 }
                 else {
@@ -54,7 +54,7 @@ function LineChart(props) {
 
         const params2 = new URLSearchParams()
         params2.append('token', localStorage.getItem('token'))
-        params2.append('year', currentYear-1);
+        params2.append('year', currentYear - 1);
         await axios.post(url, params2, config)
             .then((result) => {
                 if (result.data.status === "true") {
@@ -105,7 +105,7 @@ function LineChart(props) {
 
         const params2 = new URLSearchParams()
         params2.append('token', localStorage.getItem('token'))
-        params2.append('year', currentYear-1);
+        params2.append('year', currentYear - 1);
 
         await axios.post(url, params2, config)
             .then((result) => {
@@ -126,42 +126,42 @@ function LineChart(props) {
             })
     }
 
-    
+
 
     Chart.register(PointElement, ...registerables);
 
 
     const data = {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun","July","Aug","Sep","Oct","Nov","Dec"],
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"],
         datasets: [
             {
                 label: "Current year expense",
                 data: lineChartExpenseData,
                 fill: true,
-                backgroundColor: "'rgba(255, 206, 86, 0.8)' ",
+                backgroundColor: "'rgba(255, 206, 86, 1)' ",
                 borderColor: "rgba(75,192,192,1)"
             },
             {
                 label: "Current year income",
                 data: lineChartRevenueData,
-                fill: false,
-                borderColor: "#742774"
+                fill: true,
+                borderColor: "rgba(75,192,192,1)",
+                backgroundColor: "#2F2323"
             },
             {
                 label: "Previous year expense",
                 data: lineChartPreviousExpenseData,
-                backgroundColor: "rgba(75,192,192,0.2)",
-                fill: true,
-                borderColor: "#fff"
+                fill: false,
+                borderColor: "red"
             },
             {
-                label: "Current year income",
+                label: "Previous year income",
                 data: lineChartPreviousRevenueData,
                 fill: false,
-                borderColor: "#742774"
+                borderColor: "blue"
             },
-            
-            
+
+
         ]
     };
 
@@ -175,11 +175,11 @@ function LineChart(props) {
     };
 
 
-  return (
-      <div className='myLineChart'>
-          <Line data={data} options={options} />
-    </div>
-  )
+    return (
+        <div className='myLineChart'>
+            <Line data={data} options={options} />
+        </div>
+    )
 }
 
 export default LineChart

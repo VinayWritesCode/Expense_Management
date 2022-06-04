@@ -1,13 +1,15 @@
 .wrap-top {
-background: url(../../images/bg4.svg);
+    background: url(../../images/bg4.svg);
+    height: 88vh;
 }
 
 
 .home-top-container-vs {
-  display: grid;
-  grid-template-columns: auto auto;
-  background-color: #260c2689;
-  gap: 50px;
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: #260c2689;
+    gap: 50px;
+    background: transparent;
 }
 
 
@@ -20,15 +22,15 @@ background: url(../../images/bg4.svg);
 
 
 .landing-page-title {
-   margin: 15vh 0 0 5vw;
-   color: #dfb8df;
-   height: 5vh;
+    margin: 25vh 0 0 5vw;
+    color: #dfb8df;
+    height: 5vh;
 }
 
-.landing-page-title h4{
+.landing-page-title h4 {
     font-size: 1.8em;
     font-family: 'Tangerine',
-    serif;
+        serif;
     word-spacing: 0.2em;
     padding: 5px;
 }
@@ -36,7 +38,8 @@ background: url(../../images/bg4.svg);
 .landing-page-title h4 span {
     font-size: 1.9em;
     font-family: 'Tangerine',
-    serif;
+        serif;
+    color: cadetblue;
 }
 
 
@@ -45,7 +48,7 @@ background: url(../../images/bg4.svg);
     min-height: 50vh;
     animation: bounce 2s ease-in infinite alternate-reverse both;
     padding: 10vh 2vw;
-    
+
 }
 
 
@@ -56,35 +59,41 @@ background: url(../../images/bg4.svg);
 }
 
 @keyframes bounce {
-   0% {
-  transform: translateY(5vh);
-}
-100% {
-  transform: translateY(0px);
-}
-   
+    0% {
+        transform: translateY(5vh);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+
 }
 
 @-webkit-keyframes bounce {
-   0%, 20%, 50%, 80%, 100% {
-       transform: translateY(0);
-   }
-   40% {
-       transform: translateY(-30px);
-   }
-   60% {
-       transform: translateY(-15px);
-   }
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-30px);
+    }
+
+    60% {
+        transform: translateY(-15px);
+    }
 }
 
 @media only screen and (max-width: 600px) {
 
-.home-top-container-vs {
-    grid-template-columns: auto;
+    .home-top-container-vs {
+        grid-template-columns: auto;
+    }
+        .wrap-top {
+            height: 105vh;
+        }
 }
-
-}
-
-
-
-

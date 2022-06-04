@@ -121,7 +121,7 @@ function ExpenseForm(props) {
                         </tr>
                         <tr>
                             <th>Remark :</th>
-                            <td><input type="text" className="input" placeholder="Add Remark" value={expenseData.Remark} name="Remark" onChange={(e) => onChange(e)} /></td>
+                            <td><input type="text" className="input" placeholder="Add Remark" value={expenseData.Remark} name="Remark" onChange={(e) => onChange(e)} required /></td>
                         </tr>
                         <tr>
                             <td colSpan="2"><input type="button" className="input" style={{ cursor: "pointer" }} onClick={handleExpenseSubmit} value="ADD" /></td>

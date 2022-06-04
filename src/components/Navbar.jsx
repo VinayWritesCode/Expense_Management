@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import '../resources/styles/Navbar.css';
+import logo from '../images/logo(EM).png';
 
 function Navbar() {
   let location = useLocation();
@@ -29,7 +30,9 @@ function Navbar() {
     return (
       <div>
         <nav>
+          <Link to="/" ><img src={logo} id="LogoImage" alt="" /></Link>
           <ul>
+            
             <li> <Link to="/" className={`btn ${location.pathname === "/" ? "active" : ""}`} >Home</Link> </li>
             <li><Link to="/UpdateList" onClick={refreshPage} className={`btn ${location.pathname === "/UpdateList" ? "active" : ""}`} > Records </Link></li>
             <li><Link to="/Profile" className={`btn ${location.pathname === "/Profile" ? "active" : ""}`}  >Profile</Link></li>

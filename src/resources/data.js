@@ -1,3 +1,5 @@
+// Data used in initial implementation
+
 const data = {
     dailyExpense:[
         {

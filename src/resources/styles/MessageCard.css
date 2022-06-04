@@ -42,6 +42,7 @@
     border-radius: 50%;
     border: 2px solid #fff;
     margin: 20px;
+    box-shadow: 0 10px 50px rgb(114, 99, 227);
 }
 
 .partTwo {

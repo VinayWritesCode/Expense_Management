@@ -1,14 +1,21 @@
-
 .container-top {
-    background: linear-gradient(30deg,rgb(134, 50, 136) 10%, rgb(15, 2, 27) );
+    background: linear-gradient(30deg, rgb(134, 50, 136) 10%, rgb(15, 2, 27));
 }
+
 input[type='button'] {
     padding: 5px 15px;
     background-color: transparent;
     font-weight: bold;
     border-radius: 25px;
     border: 2px solid #ffa500;
-    
+
+}
+
+input[type='date'] {
+    padding: 5px 15px;
+    background-color: transparent;
+    border-radius: 25px;
+    margin: -8px 0 0 8px;
 }
 
 input[type='button']:hover {
@@ -19,3 +26,28 @@ input[type='button']:hover {
 .title {
     padding: 10vh 0 10vh 0;
 }
+
+.SearchByDate {
+    width: 100%;
+}
+
+.search-btn-2 {
+    margin-top: 5.8vh;
+}
+
+.SearchByDate, .Date {
+    margin-top: 5vh;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+
+.SearchByDate {
+    flex-direction: column;
+}
+
+}
+
+

@@ -8,17 +8,17 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 
 function PieChart(props) {
 
-    
+
     const { data, getMethod, setYear, year, labelMonth } = props;
- 
+
     const amount = data.map(item => {
         return item.Amount;
-    }) 
+    })
     const month = data.map(item => {
-            return labelMonth[item.Month-1];
-        }) 
-    
-    
+        return labelMonth[item.Month - 1];
+    })
+
+
     ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
     const myPieChart = {
         labels: month,
@@ -70,20 +70,20 @@ function PieChart(props) {
         },
     };
 
-  return (
+    return (
         <div className="PieContent">
-          
-          <div className='myPieChart'> 
-              <div className="dropdown space-tb">
-                  <input type="number" id="select_year" onChange={(e) => { setYear(e.target.value); }} min="1900" max="2099" step="1" value={year} />
-                  <button onClick={getMethod}> Search </button>
-              </div>
-          <Pie data={myPieChart} />
-          
-          </div>
+
+            <div className='myPieChart'>
+                <div className="dropdown space-tb">
+                    <input type="number" id="select_year" onChange={(e) => { setYear(e.target.value); }} min="1900" max="2099" step="1" value={year} />
+                    <button onClick={getMethod}> Search </button>
+                </div>
+                <Pie data={myPieChart} />
+
+            </div>
         </div>
 
-  )
+    )
 }
 
 export default PieChart

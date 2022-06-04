@@ -14,7 +14,7 @@ function Chart(props) {
     const date = new Date();
     const { labelMonth, expenseData, revenueData, ExpensesEachMonth, RevenuesEachMonth, status, currentYear, year, setYear } = props
     const currentMonth = date.getMonth()
-    const [monthYear, setMonthYear] = useState({ "month": currentMonth, "year": currentYear});
+    const [monthYear, setMonthYear] = useState({ "month": currentMonth, "year": currentYear });
     const [expenseDayData, setExpenseDayData] = useState({ "message": [{ "Day": "" }], "status": "false" });
     const [revenueDayData, setRevenueDayData] = useState({ "message": [{ "Day": "" }], "status": "false" });
 
@@ -89,15 +89,15 @@ function Chart(props) {
             })
     }
 
-   
+
     const callRevenueExpenseMethod = async () => {
-         ExpensesDayMonth();
-         RevenuesDayMonth();
+        ExpensesDayMonth();
+        RevenuesDayMonth();
     }
 
-    
 
-    
+
+
 
     return (
         <div>
@@ -131,12 +131,12 @@ function Chart(props) {
                     </div>
                 </div>
 
-              
-                
+
+
 
             </div>
         </div>
-  )
+    )
 }
 
 export default Chart

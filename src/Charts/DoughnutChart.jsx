@@ -9,7 +9,7 @@ function DoughnutChart(props) {
 
 
   const month = dChart.data.map(item => {
-    return labelMonth[item.Month-1];
+    return labelMonth[item.Month - 1];
   })
 
   const totalUser = dChart.data.map(item => {
@@ -20,36 +20,36 @@ function DoughnutChart(props) {
   const data = {
     labels,
     datasets: [
-        {
-            label: 'New Users Each Month',
-            data: totalUser,
-            borderColor: ['rgba(255,206,86,0.2)'],
-            backgroundColor: ['rgba(232,99,132,1)',
-            'rgba(232,211,6,1)',
-            'rgba(54,162,235,1)',
-            'rgba(255,159,64,1)',
-            'rgba(153,102,255,1)',
-              'rgba(232,99,132,1)',
-              'rgba(232,211,6,1)',
-              'rgba(54,162,235,1)',
-              'rgba(255,159,64,1)',
-              'rgba(153,102,255,1)' ,
-              'rgba(232,99,132,1)',
-              'rgba(232,211,6,1)'],
-            pointBackgroundColor: 'rgba(255,206,86,0.2)',
-        }
+      {
+        label: 'New Users Each Month',
+        data: totalUser,
+        borderColor: ['rgba(255,206,86,0.2)'],
+        backgroundColor: ['rgba(232,99,132,1)',
+          'rgba(232,211,6,1)',
+          'rgba(54,162,235,1)',
+          'rgba(255,159,64,1)',
+          'rgba(153,102,255,1)',
+          'rgba(232,99,132,1)',
+          'rgba(232,211,6,1)',
+          'rgba(54,162,235,1)',
+          'rgba(255,159,64,1)',
+          'rgba(153,102,255,1)',
+          'rgba(232,99,132,1)',
+          'rgba(232,211,6,1)'],
+        pointBackgroundColor: 'rgba(255,206,86,0.2)',
+      }
 
     ]
-}
+  }
 
   const options = {
     plugins: {
       legend: {
         labels: {
-          color: "#fff", 
-         
+          color: "#fff",
+
           font: {
-            size: 18 
+            size: 18
           }
         }
       },
@@ -73,17 +73,17 @@ function DoughnutChart(props) {
 
   }
 
-  const handleSearch = async() => {
+  const handleSearch = async () => {
     DoughnutData();
   }
 
   return (
     <div>
       <div className="myPieChart">
-        <h2 style={{marginTop: "7vh"}}>Monthly New User</h2>
+        <h2 style={{ marginTop: "7vh" }}>Monthly New User</h2>
         <div className="dropdown space-tb">
-          
-          <input type="number" name="year" id="select_year" onChange={(e) => { setDChart({ ...dChart, [e.target.name]: e.target.value}); }} min="1900" max="2099" step="1" value={dChart.year} />
+
+          <input type="number" name="year" id="select_year" onChange={(e) => { setDChart({ ...dChart, [e.target.name]: e.target.value }); }} min="1900" max="2099" step="1" value={dChart.year} />
           <button onClick={handleSearch}> Search </button>
         </div>
         <Doughnut data={data} options={options} />

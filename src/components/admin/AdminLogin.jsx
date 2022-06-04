@@ -85,7 +85,7 @@ function AdminLogin() {
                                 <p>
                                     Please enter your login details to view your dashboard
                                 </p>
-                                
+
                             </div>
                             <div className="image"></div>
                         </div>

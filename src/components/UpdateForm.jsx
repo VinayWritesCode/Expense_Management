@@ -19,12 +19,12 @@ function UpdateForm(props) {
             let updateType;
             const params = new URLSearchParams()
             if(showUpdate.type === "Expense"){
-
+                
                 updateType = "updateExpense.php";
                 params.append('spendid', formData.spendid)
                 params.append('datetime', formData.datetime)
                 params.append('type', formData.Type)
-                params.append('remark', formData.Type)
+                params.append('remark', formData.Remark)
             } else { 
                 updateType = "updateRevenue.php"; 
                 params.append('recieved_id', formData.recieved_id)
@@ -47,10 +47,10 @@ function UpdateForm(props) {
 
             await axios.post(url, params, config)
                 .then((result) => {
-                    console.log(result.data)
                     if (result.data.status === "true") {
                         alert(" Expense Update successfully");
                         setShowUpdate('false');
+                        refreshPage();
                     }
                     else {
                         console.log(result.data.message);
@@ -85,7 +85,7 @@ function UpdateForm(props) {
          )
     }
     else{
-
+        
   return (
       <div>
           <button id="close" onClick={closeForm} >x</button>
@@ -108,6 +108,7 @@ function UpdateForm(props) {
                       <td><input type="text" placeholder="Enter Amount" className="input" value={formData.Amount} name="Amount" onChange={(e) => onChange(e)} required /></td>
                   </tr>
                   {
+                      
                       (showUpdate.type === "Expense") ? <tr>
                           <th>Type :</th>
                           <td><select className="input" value={formData.Type} name="Type" onChange={(e) => onChange(e)}>

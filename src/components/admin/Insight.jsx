@@ -6,16 +6,17 @@ import '../../resources/styles/Insight.css';
 
 function Insight(props) {
 
-  const { currentYear, currentMonth, labelMonth } = props; 
-  const [dChart, setDChart] = useState({ "year": currentYear, "data":[]});
+  const { currentYear, currentMonth, labelMonth } = props;
+  const [dChart, setDChart] = useState({ "year": currentYear, "data": [] });
 
-   useEffect(() => {
-     DoughnutData()
-     // eslint-disable-next-line
-   }, [])
-   
-  
+  useEffect(() => {
+    DoughnutData()
+    // eslint-disable-next-line
+  }, [])
+
+
   const DoughnutData = async () => {
+    setDChart({ ...dChart, "data": [] });
     const url = `http://localhost:8808/Server_Expense_Management/api/UserData/admin/Insight.php`;
     const params = new URLSearchParams()
     params.append('admintoken', localStorage.getItem('admintoken'))
@@ -29,30 +30,30 @@ function Insight(props) {
     await axios.post(url, params, config)
       .then((result) => {
         if (result.data.status === "true") {
-          setDChart({"year": dChart.year,  "data": result.data.message});
+          setDChart({ "year": dChart.year, "data": result.data.message });
         }
         else {
           alert("No data Found");
         }
       })
       .catch((err) => {
-        console.log("current Month "+currentMonth);
+        console.log("current Month " + currentMonth);
       })
-      
+
   }
 
   return (
     <div className="Insight-container">
-          <div className='title'> <h5>Insight</h5> </div>
-          <div className="content-insight">
-              <div className="insight-charts">
-                <div className="partonechart">
+      <div className='title'> <h5>Insight</h5> </div>
+      <div className="content-insight">
+        <div className="insight-charts">
+          <div className="partonechart">
             <div className="myDoughnutChart">
-              
-              <DoughnutChart dChart={dChart} setDChart={setDChart} DoughnutData={DoughnutData} labelMonth={labelMonth} /></div>  
-                </div>
-              </div>
+
+              <DoughnutChart dChart={dChart} setDChart={setDChart} DoughnutData={DoughnutData} labelMonth={labelMonth} /></div>
           </div>
+        </div>
+      </div>
     </div>
   )
 }
